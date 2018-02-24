@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { MovieFilterComponent } from './movies/movie-filter/movie-filter.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AppComponent,
     MoviesComponent,
     HomeComponent,
-    NavBarComponent
+    NavBarComponent,
+    MovieFilterComponent
   ],
   imports: [
     BrowserModule,
