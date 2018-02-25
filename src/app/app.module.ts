@@ -7,6 +7,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MovieFilterComponent } from './movies/movie-filter/movie-filter.component';
+import { NotFoundComponent } from './shared/not-found.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MovieFilterComponent } from './movies/movie-filter/movie-filter.compone
     MoviesComponent,
     HomeComponent,
     NavBarComponent,
-    MovieFilterComponent
+    MovieFilterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
