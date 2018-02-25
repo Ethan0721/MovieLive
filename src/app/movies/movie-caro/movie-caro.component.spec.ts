@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MovieCaroComponent } from './movie-caro.component';
+import { NgbdCarouselConfig } from './movie-caro.component';
 
 describe('MovieCaroComponent', () => {
-  let component: MovieCaroComponent;
-  let fixture: ComponentFixture<MovieCaroComponent>;
+  let component: NgbdCarouselConfig;
+  let fixture: ComponentFixture<NgbdCarouselConfig>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MovieCaroComponent ]
+      declarations: [ NgbdCarouselConfig ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MovieCaroComponent);
+    fixture = TestBed.createComponent(NgbdCarouselConfig);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
