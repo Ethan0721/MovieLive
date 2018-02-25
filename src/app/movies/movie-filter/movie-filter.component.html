@@ -1,6 +1,6 @@
 <!-- <div class="list-group sticky-top">
   <a href="" class="list-group-item  list-group-item-active" [class.active]="!categoryId"> All Categories </a>
-  <a *ngFor="let c of categories" routerLink="/" [queryParams]="{ categoryId: c.id }" href="#" class="list-group-item list-group-item-active"
+  <a *ngFor="let c of filters" routerLink="/" [queryParams]="{ filterId: c.id }" href="#" class="list-group-item list-group-item-active"
     [class.active]="cat == c.id">
     {{c.name}}
   </a>

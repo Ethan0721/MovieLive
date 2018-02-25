@@ -8,6 +8,9 @@ import { MovieFilterComponent } from './movies/movie-filter/movie-filter.compone
 import { NotFoundComponent } from './shared/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgbdCarouselConfig} from './movies/movie-caro/movie-caro.component';
+import { RouterModule } from '@angular/router';
+import { FilterService } from './services/filter.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,10 +25,13 @@ import {NgbdCarouselConfig} from './movies/movie-caro/movie-caro.component';
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot([]),
+    HttpClientModule
   ],
   providers: [
-    NgbdCarouselConfig
+    NgbdCarouselConfig,
+    FilterService
   ],
   bootstrap: [AppComponent]
 })
