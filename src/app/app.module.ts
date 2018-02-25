@@ -8,6 +8,7 @@ import { MovieFilterComponent } from './movies/movie-filter/movie-filter.compone
 import { NotFoundComponent } from './shared/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgbdCarouselConfig} from './movies/movie-caro/movie-caro.component';
+import { MovieBodyComponent } from './movies/movie-body/movie-body.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {NgbdCarouselConfig} from './movies/movie-caro/movie-caro.component';
     NavBarComponent,
     MovieFilterComponent,
     NotFoundComponent,
-    NgbdCarouselConfig
+    NgbdCarouselConfig,
+    MovieBodyComponent
 
   ],
   imports: [
@@ -25,7 +27,7 @@ import {NgbdCarouselConfig} from './movies/movie-caro/movie-caro.component';
     NgbModule.forRoot()
   ],
   providers: [
-    NgbdCarouselConfig
+    // NgbdCarouselConfig
   ],
   bootstrap: [AppComponent]
 })
