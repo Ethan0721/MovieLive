@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FilterService } from '../../services/filter.service';
 import { IGenre } from '../../shared/Genre';
 
-
 @Component({
   selector: 'app-movie-filter',
   templateUrl: './movie-filter.component.html',

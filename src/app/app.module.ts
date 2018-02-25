@@ -12,6 +12,7 @@ import { MovieBodyComponent } from './movies/movie-body/movie-body.component';
 import { RouterModule } from '@angular/router';
 import { FilterService } from './services/filter.service';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
