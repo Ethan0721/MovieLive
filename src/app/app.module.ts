@@ -9,7 +9,9 @@ import { NotFoundComponent } from './shared/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgbdCarouselConfig} from './movies/movie-caro/movie-caro.component';
 import { MovieBodyComponent } from './movies/movie-body/movie-body.component';
-
+import { RouterModule } from '@angular/router';
+import { FilterService } from './services/filter.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,10 +26,14 @@ import { MovieBodyComponent } from './movies/movie-body/movie-body.component';
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot([]),
+    HttpClientModule
   ],
   providers: [
     // NgbdCarouselConfig
+    NgbdCarouselConfig,
+    FilterService
   ],
   bootstrap: [AppComponent]
 })
