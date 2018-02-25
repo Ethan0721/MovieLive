@@ -16,10 +16,16 @@ export class MovieFilterComponent implements OnInit {
     // this.filterService.getAll()
     //   .subscribe(
     //   categories => {
-    //     this.filters = categories.filter(function(cat){return cat.id<29});//TO DO: wait to change back after DB is recovered
+    //     this.filters = categories;//.filter(function(cat){return cat.id<29});//TO DO: wait to change back after DB is recovered
     //     console.log('Child Componet received: ' + this.cat);
     //   }
     //   );
+    this.filters = [
+      {id:1,name:'sb',isChecked:false},
+      {id:2,name:'Commedy',isChecked:false},
+      {id:3,name:'Science',isChecked:false},
+      {id:4,name:'Action',isChecked:false}
+    ];
   }
 
   ngOnInit() {
