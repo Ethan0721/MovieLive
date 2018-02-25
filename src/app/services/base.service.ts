@@ -5,10 +5,10 @@ import { NotFoundError } from '../shared/not.found.error';
 
 
 
+
 export abstract class AbstractBaseService<T> {
     constructor(protected _http: HttpClient, protected actionUrl: string) {
     }
-
     getAll(): Observable<T[]> {
         return this._http.get(this.actionUrl)
             .map(resp => resp as T[])
@@ -41,5 +41,6 @@ export abstract class AbstractBaseService<T> {
 
         return Observable.throw(new AppError(error));
     }
+
 }
 

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FilterService } from '../../services/filter.service';
 import { IGenre } from '../../shared/Genre';
 
+
 @Component({
   selector: 'app-movie-filter',
   templateUrl: './movie-filter.component.html',
@@ -11,6 +12,7 @@ import { IGenre } from '../../shared/Genre';
 export class MovieFilterComponent implements OnInit {
   filters: IGenre[];
   @Input('cat') cat;
+
 
   constructor(private route: ActivatedRoute, private filterService: FilterService) {
     // this.filterService.getAll()
@@ -26,6 +28,7 @@ export class MovieFilterComponent implements OnInit {
       {id:3,name:'Science',isChecked:false},
       {id:4,name:'Action',isChecked:false}
     ];
+
   }
 
   ngOnInit() {
