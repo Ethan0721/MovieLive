@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FilterService } from '../../services/filter.service';
-import { IFilter } from '../../shared/Filter';
+import { IGenre } from '../../shared/Genre';
 
 @Component({
   selector: 'app-movie-filter',
@@ -9,8 +9,8 @@ import { IFilter } from '../../shared/Filter';
   styleUrls: ['./movie-filter.component.css']
 })
 export class MovieFilterComponent implements OnInit {
-  filters: IFilter[];
- @Input('cat') cat;
+  filters: IGenre[];
+  @Input('cat') cat;
 
   constructor(private route: ActivatedRoute, private filterService: FilterService) {
     // this.filterService.getAll()
