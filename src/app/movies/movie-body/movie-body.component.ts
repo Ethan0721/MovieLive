@@ -1,27 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IMovie } from '../../shared/Movies';
-
+import { MoviesService } from '../../services/movies.service';
+import { IuserResponse} from '../../shared/userResponse';
+import { ResponseService } from '../../services/response.service';
+import { ActivatedRoute, Route } from '@angular/router';
 @Component({
   selector: 'app-movie-body',
   templateUrl: './movie-body.component.html',
   styleUrls: ['./movie-body.component.css']
 })
 export class MovieBodyComponent implements OnInit {
-
-  movies : IMovie[];
+  // userResponse : IuserResponse[];
+  // movies: IMovie[]=[];
+  @Input() moviesResult : IMovie[] = [];
   
-  constructor() {
-    // this.setUpMovies();
-  this.movies = [
-    { id: 1, description : 'Hello World' },
-    { id : 2, description : 'Three guys'},
-    { id : 3, description : 'Love'}
-    ];
-  }
   ngOnInit() {
   }
+  constructor(private _activeroute: ActivatedRoute, private responseService: ResponseService) { 
+    // responseService.getOnly().subscribe(
+    //   response =>
+    //   this.moviesResult = response.results
+    // );
+ }
+   playMovie(){
+     
+    //  console.log("haha");
+   }
+      //  movie =>{
+      //     // this.movies = this.category[movie];
+      //     this.category.forEach(element => {
+      //       this.movies.push(element);
+      //     });
+      //  }
+  }
 
-  // public setUpMovies : IMovie[] = [
-   
-  // }
-}

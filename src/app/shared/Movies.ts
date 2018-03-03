@@ -1,16 +1,18 @@
+import {IGenre} from '../shared/Genre';
 export interface IMovie {
     id: number;
     description: string;
-    // title: string;
-    // price : string;
-    // url: string;
-    // length : string;
-    // publishedDate: string;
-    // publishingCompany: string;
-    // rating: number;
-    // director: string;
-    // starring : string;
-    // timeDisplayed : number; 
-    // devices : IDevices[]; 
-    // genres: IGenres[];
+    title: string;
+    poster_path: string;
+    vote_average : number;
+    popularity : number;
+    original_title : string;
+    overview : string;
+    release_date : Date;
+    revenue : string;
+    homepage:string;
+    geners : IGenre[];
+    backdrop_path ; string;
+    // genre_ids : IGenre[];
+
 }

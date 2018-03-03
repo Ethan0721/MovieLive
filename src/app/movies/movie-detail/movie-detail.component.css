@@ -1,0 +1,33 @@
+.container{
+    color:white;
+    background: black;
+    padding: 20px;
+}
+h1{
+    margin: 80px;
+    color: red;
+    font-weight: bold;
+    font-size: 50px;
+}
+ul{
+    text-align: left;
+    list-style-type: none;
+}
+
+span{
+    font-weight: bold;
+}
+.movieTitle{
+    text-align:  center;
+    font-weight: bold;
+}
+ul{
+    margin:0px;
+    padding: 0px;
+}
+.movieType {
+    display: inline;
+}
+.movieType li{
+    color: green;
+}

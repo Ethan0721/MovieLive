@@ -1,20 +1,18 @@
-<!-- <div class="col-md-9">
+<br>
+<h3 class="span">Movie Section</h3>
+<hr>
   <div class="row">
-    <ng-container *ngFor="let m of movies"> -->
-      <!-- <div class="card-deck">
-        <div class="card" style="width: 16rem;">
-          <img class="card-img-top" src='' alt="llll">
-          <div class="card-body">
-            <h5 class="card-title">{{movies.id}}</h5>
-            <h6 class="card-title">{{movies.description}}</h6>              
-           
-            <p class="card-text">{{book.price | currency}}</p>
-            <p class="card-text">Rating : {{book.rating}}</p> -->
-<div class="col-md-12">
-  <div class="row">
-    <ng-container *ngFor="let m of movies">
-        <h5 class="card-title">{{m.id}}</h5>
-        <h5 class="card-title">{{m.description}}</h5>
+    <ng-container *ngFor="let m of moviesResult">
+    <div class="card-deck">
+            <div class="card" style="width: 12rem;">
+               <a routerLink='/movie/{{m.id}}'> <img class="card-img-top" (click)="playMovie()" src='https://image.tmdb.org/t/p/original{{m.poster_path}}' alt="kkk"></a>
+                <div class="card-body" style = "text-align:right;">
+                  <h6 class= "card-text">人气:{{m.popularity}}</h6>
+                  <h6 class="card-text" >评分:{{m.vote_average}}</h6>
+                  <!-- <button (click) = 'playMovie()'>Click</button> -->
+                </div>
+                <!-- <h5 class="card-text" style = "text-align:center">{{m.title}}</h5> -->
+            </div>  
+      </div>
     </ng-container>
   </div>
-</div>

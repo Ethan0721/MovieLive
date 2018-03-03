@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MoviesService } from '../services/movies.service';
+import { IMovie } from '../shared/Movies';
+import { ActivatedRoute, Route } from '@angular/router';
+import { ResponseService } from '../services/response.service';
 
 @Component({
   selector: 'app-movies',
@@ -7,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-
-  constructor() { }
-
+  
+  moviesResult : IMovie[] = [];
   ngOnInit() {
   }
-
+  constructor(private _activeroute: ActivatedRoute, private responseService: ResponseService) { 
+      responseService.getAllMovies().subscribe(
+      response =>
+      this.moviesResult = response.results
+    );
+  }
+  getMovies() : any{
+    return this.moviesResult;
+  }
 }

@@ -1,0 +1,8 @@
+.card-deck{
+    margin:2px;
+    padding: 5px;
+}
+
+.card-deck{
+    cursor: pointer;
+}
