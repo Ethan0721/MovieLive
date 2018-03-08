@@ -1,5 +1,14 @@
-img {
-    width : 100%;
+
+/* img {
     height : 400px;
     margin: 0px;
+} */
+
+img {
+    height: 450px;
+    width:  75%;
+    cursor: pointer;
+}
+.carousel-images{
+    background-color: black;
 }

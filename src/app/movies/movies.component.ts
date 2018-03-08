@@ -12,9 +12,8 @@ import { ResponseService } from '../services/response.service';
 export class MoviesComponent implements OnInit {
   
   moviesResult : IMovie[] = [];
-  ngOnInit() {
-  }
-  constructor(private _activeroute: ActivatedRoute, private responseService: ResponseService) { 
+  ngOnInit() {}
+  constructor(private responseService: ResponseService) { 
       responseService.getAllMovies().subscribe(
       response =>
       this.moviesResult = response.results

@@ -1,12 +1,14 @@
 <ngb-carousel>
-  <ng-template ngbSlide>
-    <img src="http://i.ytimg.com/vi/0vxOhd4qlnA/maxresdefault.jpg" alt="Random first slide">
+  <ng-template ngbSlide *ngFor='let m of moviesResult | moviePopular'>
+    <div class="carousel-images" > 
+      <img src='https://image.tmdb.org/t/p/original{{m.backdrop_path}}' routerLink='/movie/{{m.id}}' class="mx-auto d-block " alt="{{m.title}}">
     <div class="carousel-caption">
-      <h3>10 seconds between slides...</h3>
-      <p>This carousel uses customized default values.</p>
-    </div>
+      <h1>{{m.title}}</h1>
+      <!-- <p>This carousel uses customized default values.</p> -->
+      </div>  
+  </div>
   </ng-template>
-  <ng-template ngbSlide>
+  <!-- <ng-template ngbSlide>
     <img src="http://ak-hdl.buzzfed.com/static/enhanced/webdr05/2013/9/17/5/enhanced-buzz-1492-1379411828-15.jpg"  alt="Random second slide">
     <div class="carousel-caption">
       <h3>No keyboard...</h3>
@@ -19,5 +21,6 @@
       <h3>And no wrap after last slide.</h3>
       <p>This carousel uses customized default values.</p>
     </div>
-  </ng-template>
+  </ng-template> -->
 </ngb-carousel>
+

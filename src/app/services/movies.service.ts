@@ -20,7 +20,7 @@ export class MoviesService {
 //   OnInit(){
 // }
 getMovieById(movieId: number) : Observable <IuserResponse[]>{
-  return this._http.get('https://api.themoviedb.org/3/movie/'+ movieId +'?api_key=8a0ef7867cdaf529f3eb1e2a63d54384&language=en-US')
+  return this._http.get('https://api.themoviedb.org/3/movie/'+ movieId +'?api_key=e7ec5de68c5c7f163beab4e361e6245d')
   .map(resp => resp as IuserResponse[]);
 }
   // return this._http.get(`${this.actionUrl}${id}`)

@@ -1,3 +1,30 @@
 <p>
   signup works!
 </p>
+
+
+<div class="container">
+  <div  class="form-signin">
+    <h2 class="form-signin-heading">Please sign Up</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" [(ngModel)] = "username"  id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" [(ngModel)] = "password" class="inputPassword" class="form-control" placeholder="Password" required="">
+
+      <label for="confirmedPassword" class="sr-only">Confirmed Password</label>
+      <input type="password" [(ngModel)] = "confirmpassword" id="inputPassword" class="form-control" placeholder="Password" required="">  
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button (click)='DoSignUp()' class="btn btn-lg btn-primary btn-block" type="submit">Sign Up </button>
+  </div>
+</div>
+
+
+{{username}}
+<br> 
+{{password}}
+<br>
+{{password}}

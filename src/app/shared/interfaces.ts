@@ -4,11 +4,17 @@ export interface IUserLogin {
     password: string;
 }
 
-export interface ITokenApiResponse {
+export interface ITokenResponse {
     userName: string;
-    role: Array<string>;
-    exp: string;
-    lastName: string;
-    firstName: string;
-    isAdmin: boolean;
+    // role: Array<string>;
+    expires_in: string;
+    token_type : string;
+    // lastName: string;
+    // firstName: string;
+    // isAdmin: boolean;
+    access_token : string;
+}
+
+export interface ISignUpResponse{
+    Message : string;
 }

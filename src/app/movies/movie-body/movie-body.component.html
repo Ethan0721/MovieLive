@@ -1,18 +1,23 @@
 <br>
 <h3 class="span">Movie Section</h3>
 <hr>
-  <div class="row">
-    <ng-container *ngFor="let m of moviesResult">
-    <div class="card-deck">
+  <div class="movie-body row">
+    <ng-container *ngFor="let m of moviesResult | paginate: { itemsPerPage: 10, currentPage: p }">
+    <div class="card-deck shadow">
             <div class="card" style="width: 12rem;">
-               <a routerLink='/movie/{{m.id}}'> <img class="card-img-top" (click)="playMovie()" src='https://image.tmdb.org/t/p/original{{m.poster_path}}' alt="kkk"></a>
-                <div class="card-body" style = "text-align:right;">
-                  <h6 class= "card-text">人气:{{m.popularity}}</h6>
-                  <h6 class="card-text" >评分:{{m.vote_average}}</h6>
-                  <!-- <button (click) = 'playMovie()'>Click</button> -->
+               <a routerLink='/movie/{{m.id}}'> <img class="card-img-top"  src='https://image.tmdb.org/t/p/original{{m.poster_path}}' alt="kkk"></a>
+                <div class="card-body" >
+                  <h6 class= "card-text">{{m.title}}</h6>
+                  <p class= "card-text" >Rating: {{m.vote_average}}</p>
+                  <!-- <ngb-rating [(rate)]="m.vote_average"></ngb-rating> -->
+
                 </div>
-                <!-- <h5 class="card-text" style = "text-align:center">{{m.title}}</h5> -->
             </div>  
       </div>
     </ng-container>
   </div>
+  <br>
+  <div class="page">
+    <pagination-controls  class = "my-pagination" (pageChange)="p = $event"></pagination-controls>
+  </div>
+  

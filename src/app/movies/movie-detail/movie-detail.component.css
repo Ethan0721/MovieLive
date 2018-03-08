@@ -16,6 +16,10 @@ ul{
 
 span{
     font-weight: bold;
+    font-size: 18px;
+}
+ #sub_title{
+    font-size: 30px;
 }
 .movieTitle{
     text-align:  center;
@@ -31,3 +35,13 @@ ul{
 .movieType li{
     color: green;
 }
+
+
+.img-overlay {
+    position: absolute;
+    left : 45%;
+    top: 70px;
+    color:white !important;
+    opacity: .7;
+}
+

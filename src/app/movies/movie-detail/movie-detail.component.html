@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Portfolio Item Heading -->
-  <h1 class="my-4 movieTitle" >{{movieDetail?.title}}</h1>
+  <h1 class="my-4 movieTitle" >{{movieDetail?.title}}  <span id = "sub_title">{{ movieDetail?.release_date | releaseYearFilter}} </span></h1> 
   <!-- Portfolio Item Row -->
   <div class="row">
     <div class="col-md-6">
@@ -8,18 +8,25 @@
     </div>
     <div class="col-md-4 offset-md-1">
       <!-- <h2 class="my-3 movieTitle"> {{movieDetail?.title}}</h2> -->
-      <img class="img-fluid" src='https://image.tmdb.org/t/p/original{{movieDetail?.backdrop_path}}' alt="poster images">
+      <div class="image-wrapper">
+          <!-- <a href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" target="_blank">  -->
+        <img class="img-fluid" src='https://image.tmdb.org/t/p/original{{movieDetail?.backdrop_path}}' alt="poster images"> 
+         <!-- </a> -->
+        <div class="img-overlay">
+          <a href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" target="_blank"><i class="fa fa-play-circle fa-4x"></i> </a>
+        </div>
+      </div>
       <hr>
       <h3>{{movieDetail?.title}}</h3>
       <div id = "movieDetails">
         <ul>
           <span>Movie type</span>: <li class = "movieType my-3" *ngFor="let md of movieDetail?.genres" >{{md?.name}} &nbsp;</li>
-          <li> <span>Relase year</span> :  {{movieDetail?.release_date}} </li>
+          <li> <span>Relase year</span> :  {{movieDetail?.release_date}}</li>
           <li> <span>Run time</span> : {{movieDetail?.runtime}} </li>
           <li> <span>Revenue</span> : {{movieDetail?.revenue}} </li> 
           <li> <span>Rating</span> : {{movieDetail?.vote_average}} </li>
           <li> <span>Vote count</span>:  {{movieDetail?.vote_count}} </li>
-          <li> <span>Overview</span>: <br>{{movieDetail?.overview}} </li>
+          <li> <span>Overview</span> <br>{{movieDetail?.overview}} </li>
         </ul>
         <div> 
           <span>Home page</span> :  <a href="{{movieDetail?.homepage}}">{{movieDetail?.homepage}}</a> 
@@ -32,7 +39,7 @@
   <!-- Related Projects Row -->
   <!-- <h3 class="my-4">Related Projects</h3> -->
  
-  <a href = "https://www.youtube.com/watch?v={{moviePlay.key}}"> Watch </a>
+  
   <div class="row">
     <div class="col-md-3 col-sm-6 mb-4">
       <a href="#">
@@ -45,8 +52,5 @@
         <img class="img-fluid" src="http://placehold.it/500x300" alt="">
       </a>
     </div>
-
-
   </div>
-
 </div>

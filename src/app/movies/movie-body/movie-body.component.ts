@@ -4,6 +4,8 @@ import { MoviesService } from '../../services/movies.service';
 import { IuserResponse} from '../../shared/userResponse';
 import { ResponseService } from '../../services/response.service';
 import { ActivatedRoute, Route } from '@angular/router';
+import {NgxPaginationModule} from  'ngx-pagination';
+
 @Component({
   selector: 'app-movie-body',
   templateUrl: './movie-body.component.html',
@@ -12,6 +14,7 @@ import { ActivatedRoute, Route } from '@angular/router';
 export class MovieBodyComponent implements OnInit {
   // userResponse : IuserResponse[];
   // movies: IMovie[]=[];
+  p : number  = 1;
   @Input() moviesResult : IMovie[] = [];
   
   ngOnInit() {
