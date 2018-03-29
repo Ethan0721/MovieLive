@@ -1,12 +1,6 @@
-
-/* img {
-    height : 400px;
-    margin: 0px;
-} */
-
 img {
-    height: 450px;
-    width:  75%;
+    height: 500px;
+    width:  65%;
     cursor: pointer;
 }
 .carousel-images{

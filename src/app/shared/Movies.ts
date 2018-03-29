@@ -12,7 +12,8 @@ export interface IMovie {
     revenue : string;
     homepage:string;
     geners : IGenre[];
-    backdrop_path ; string;
+    backdrop_path : string;
+    asdsf : string;
     // genre_ids : IGenre[];
 
 }

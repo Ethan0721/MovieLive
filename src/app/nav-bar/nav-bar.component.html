@@ -6,21 +6,18 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active" routerLinkActive='active'>
-        <a class="nav-link"  routerLink='/'  href="#" >Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item active"  routerLinkActive='active' >
+        <a class="nav-link"  routerLink='/'  href="#"  >Home<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item" routerLinkActive='active'>
-        <a class="nav-link" routerLink='/link' href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown" routerLinkActive='active'>
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+      <!-- <li class="nav-item" routerLinkActive='active'>
+        <a class="nav-link" routerLink='/movies' href="#">Popular</a>
+      </li> -->
+
+      <li ngbDropdown class="nav-item" routerLinkActive='active'>
+        <a  class="nav-link" id="dropdownBasic1" ngbDropdownToggle> Movies </a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button class="dropdown-item"  routerLink='/movies/popular' [queryParams]="{pageId: 1}">Popular</button>
+          <button class="dropdown-item" routerLink='/movies/top' >Top</button>
         </div>
       </li>
       <li class="nav-item" routerLinkActive='active'>

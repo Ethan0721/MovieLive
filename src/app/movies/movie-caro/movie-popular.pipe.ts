@@ -24,7 +24,7 @@ export class MoviePopularPipe implements PipeTransform {
     for(let i = 0; i < value.length; i++){
       if(value[i].vote_average > 7)
         topMovies.push(value[i]);
-        console.log(value[i].vote_average);
+        // console.log(value[i].vote_average);
     }
     return topMovies;
   }

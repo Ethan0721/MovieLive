@@ -1,30 +1,73 @@
-<p>
-  signup works!
-</p>
-
-
 <div class="container">
-  <div  class="form-signin">
+  <form class="form-signin" #f="ngForm" (ngSubmit)="addUser(f)">
     <h2 class="form-signin-heading">Please sign Up</h2>
-    <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" [(ngModel)] = "username"  id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-    <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" [(ngModel)] = "password" class="inputPassword" class="form-control" placeholder="Password" required="">
+    
+    <div class="form-group">
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" name="username"  
+             #emailUser="ngModel"
+             class="inputEmail form-control"
+             pattern=".+\@.+\..+" 
+             placeholder="Email address"  
+             required autofocus="" ngModel >
+    </div>
+    <div *ngIf="emailUser?.touched" >
+      <div [hidden]="!emailUser?.hasError('required')" class="alert alert-danger">
+          Email is required format should be john@doe.com. 
+      </div> 
+      <div [hidden]="!emailUser?.hasError('pattern')" class="alert alert-danger">
+          Invalid Email format!
+      </div>
+    </div> 
+    
 
+    <div class="form-group">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name= "password" 
+             #passwordUser="ngModel"
+             class="inputPassword form-control" 
+             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,15}$" 
+             placeholder="Password" ngModel required >
+    </div>
+    <div *ngIf="passwordUser?.touched" >
+        <div [hidden]="!passwordUser?.hasError('required')" class="alert alert-danger">
+            Password is required.
+        </div> 
+        <div [hidden]="!passwordUser?.hasError('pattern')" class="alert alert-danger">
+            Must contain Uppercase,Number,Character, minimum 6 characters!
+        </div>
+    </div> 
+
+
+    <div class="form-group">
       <label for="confirmedPassword" class="sr-only">Confirmed Password</label>
-      <input type="password" [(ngModel)] = "confirmpassword" id="inputPassword" class="form-control" placeholder="Password" required="">  
+      <input type="password" 
+             #confirmpasswordUser="ngModel" 
+             name="confirmpassword" class="inputPassword form-control" 
+             placeholder="Confirm Password"  required ngModel > 
+    </div>
+    <div *ngIf="confirmpasswordUser?.touched" >
+        <div [hidden]="!confirmpasswordUser.hasError('pattern')" class="alert alert-danger">
+            Confirmed password is required. 
+        </div> 
+        <!-- <div [hidden]="">
+
+        </div> -->
+    </div> 
+
+
     <div class="checkbox">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button (click)='DoSignUp()' class="btn btn-lg btn-primary btn-block" type="submit">Sign Up </button>
-  </div>
+    <button  class="btn btn-lg btn-primary btn-block" [disabled]="f.invalid"  type="submit">Sign Up </button>
+  </form>
 </div>
 
+ {{f.value | json}}
 
-{{username}}
-<br> 
-{{password}}
-<br>
-{{password}}
+
+
+
+

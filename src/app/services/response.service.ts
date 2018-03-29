@@ -6,30 +6,46 @@ import { Observable } from 'rxjs/Rx';
 import { AppError } from '../shared/app.error';
 import { NotFoundError } from '../shared/not.found.error';
 import { IMovie } from '../shared/Movies';
+import { IMovieGenre, IGenre } from '../shared/Genre';
 @Injectable()
 // export class ResponseService extends AbstractBaseService<IuserResponse>{
 
 export class ResponseService {
+    url : string = "https://api.themoviedb.org/3/movie/";
+    api_token : string = "?api_key=e7ec5de68c5c7f163beab4e361e6245d";
+    constructor(private _http:HttpClient) {}
 
-constructor(private _http:HttpClient) {
-// super(_http, "https://api.themoviedb.org/3/movie/popular?api_key=8a0ef7867cdaf529f3eb1e2a63d54384&language=en-US&page=1");
+    getPopularMovies(pageid : number ): Observable<IuserResponse>{
+        return this._http.get( this.url + "popular" + this.api_token + "&language=en-US&page=" + pageid)
+        .map(resp => resp as IuserResponse)
+        .catch(this.handleError);
     }
-
-    getAllMovies(): Observable<IuserResponse>{
-        return this._http.get("https://api.themoviedb.org/3/movie/popular?api_key=e7ec5de68c5c7f163beab4e361e6245d&page=1")
+    getTopMovies(pageid : number ): Observable<IuserResponse>{
+        return this._http.get( this.url + "top_rated" + this.api_token + "&language=en-US&page=" + pageid)
+        .map(resp => resp as IuserResponse)
+        .catch(this.handleError);
+    }
+    getUpcommingMovies() : Observable <IuserResponse>{
+        return this._http.get(this.url+'upcomming' + this.api_token)
+        .map(resp => resp as IuserResponse)
+        .catch(this.handleError);
+    }
+    getGenresMovie(genreId : number ): Observable<IuserResponse>{
+        return this._http.get( this.url+ "&with_genres" + genreId + "&language=en-US&page=1")
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
     }
     getMovieById(movieId : number ): Observable <IMovie>{
-        return this._http.get('https://api.themoviedb.org/3/movie/'+movieId+'?api_key=e7ec5de68c5c7f163beab4e361e6245d')
+        return this._http.get(this.url+movieId+this.api_token)
         .map(resp => resp as IMovie)
         .catch(this.handleError);
     }
-    getMoviePlay(movieId : number) : Observable <IuserResponse>{
-        return this._http.get('http://api.themoviedb.org/3/movie/' + movieId + '/videos?api_key=e7ec5de68c5c7f163beab4e361e6245d')
+    getMoviePlaying(movieId : number) : Observable <IuserResponse>{
+        return this._http.get(this.url+ movieId + '/videos' + this.api_token)
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
     }
+   
     
     private handleError(error: Response) {
         // if (error.status === 400) { return Observable.throw(new BadInputError(error.json())); }

@@ -1,12 +1,26 @@
+.section-container{
+    padding: 50px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.section-header{
+    font-weight: bold;
+    font-size: 35px;
+}
 .card-deck{
-    margin:2px;
+    margin:10px;
     padding: 5px;
 }
-
+.card {
+    width:16rem;
+    margin:0px;
+}
 .card-deck{
     cursor: pointer;
-    margin: 10px;
+    margin: 20px;
     padding: 0px;
+}
+.card-deck:hover {
+    box-shadow: 2px 8px 16px 0 rgba(0,0,0,0.3);
 }
 .card-body{
     /* background:lavender; */
@@ -15,31 +29,17 @@
 .card-body h6{
     text-align:center;
     margin-bottom: 15px;
+    font-size: 20px;
     font-weight: bold;
-
 }
 .card-body p {
     position:  absolute;
     bottom: 5px;
-    left: 100px;
+    left: 60%;
     text-align: right;
     color: red;
 }
-h3{
-    color: azure;
+#page-text{
+    font-weight: bold;
+    color:rgb(10, 10, 110);
 }
-
-/* .movie-body {
-    background-color: black;
-} */
-.page{
-    background: white;
-    width:350px;
-}
-/* .box-shadow{ 
-    box-shadow : 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-    transition : box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.box-shadow:hover{
-    box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
-} */

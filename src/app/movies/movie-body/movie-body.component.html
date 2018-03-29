@@ -1,23 +1,40 @@
+<app-nav-bar></app-nav-bar>
+<ngbd-carousel-config></ngbd-carousel-config>
 <br>
-<h3 class="span">Movie Section</h3>
-<hr>
-  <div class="movie-body row">
-    <ng-container *ngFor="let m of moviesResult | paginate: { itemsPerPage: 10, currentPage: p }">
-    <div class="card-deck shadow">
-            <div class="card" style="width: 12rem;">
-               <a routerLink='/movie/{{m.id}}'> <img class="card-img-top"  src='https://image.tmdb.org/t/p/original{{m.poster_path}}' alt="kkk"></a>
-                <div class="card-body" >
-                  <h6 class= "card-text">{{m.title}}</h6>
-                  <p class= "card-text" >Rating: {{m.vote_average}}</p>
-                  <!-- <ngb-rating [(rate)]="m.vote_average"></ngb-rating> -->
-
-                </div>
-            </div>  
+<div class ="section-container">
+    <h3 class="section-header">Movie Section</h3><hr>
+    <div class="row"> 
+      <div class = "col-md-2" >
+        <app-genre></app-genre>
       </div>
-    </ng-container>
-  </div>
-  <br>
-  <div class="page">
-    <pagination-controls  class = "my-pagination" (pageChange)="p = $event"></pagination-controls>
-  </div>
-  
+      <div class="col-md-10 section-body">
+        <div class="row"><!-- pipe filter add in movieResult   | paginate: { itemsPerPage: 10, currentPage: p }" -->
+          <ng-container>
+            <div class="card-deck" *ngFor="let m of moviesResult">
+              <div class="card">
+                  <a routerLink='/movie/{{m.id}}'> <img class="card-img-top"  src='https://image.tmdb.org/t/p/original{{m.poster_path}}' alt="kkk"></a>
+                <div class="card-body" >
+                  <h6 id= "card-title">{{m.title}}</h6>     
+                  <p class= "card-text" >Rating: {{m.vote_average}}</p>
+                </div>
+              </div>  
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+<br>
+    <div class="section-footer">
+     <div class="row">
+      <div class="col-md-3" id = "page-text" >Currently on page: {{pageId}}</div>
+      <div class="col-md-7"></div>
+      <div class="col-md-2">
+        <button class="btn btn-info" (click)= "decrement()" *ngIf="pageId>1" [routerLink]="['/movies/popular']" [queryParams]="{ pageId: +pageId-1 }" >&#9794;</button> 
+        <button class = "btn btn-danger" (click) = "increment()" [routerLink]="['/movies/popular']" [queryParams]="{ pageId:  +pageId+1  } " >&#9792;</button>
+        <!-- [routerLink]="['/movies/']" [queryParams]="{ page: pageId }" -->
+      </div>
+     </div>
+    </div>
+</div>
+<br>
+

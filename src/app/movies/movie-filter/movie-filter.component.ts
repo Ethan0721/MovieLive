@@ -22,12 +22,12 @@ export class MovieFilterComponent implements OnInit {
     //     console.log('Child Componet received: ' + this.cat);
     //   }
     //   );
-    this.filters = [
-      {id:1,name:'sb',isChecked:false},
-      {id:2,name:'Commedy',isChecked:false},
-      {id:3,name:'Science',isChecked:false},
-      {id:4,name:'Action',isChecked:false}
-    ];
+    // this.filters = [
+    //   {id:1,name:'sb',isChecked:false},
+    //   {id:2,name:'Commedy',isChecked:false},
+    //   {id:3,name:'Science',isChecked:false},
+    //   {id:4,name:'Action',isChecked:false}
+    // ];
 
   }
 

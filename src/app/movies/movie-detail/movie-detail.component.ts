@@ -15,14 +15,13 @@ export class MovieDetailComponent implements OnInit {
   moviePlay : any;
   constructor(private _route: ActivatedRoute, private responseService: ResponseService) {
     this.movieId = this._route.snapshot.params['id'];
-    // console.log('hahha'+ this.movieId);
     responseService.getMovieById(this.movieId)
     .subscribe(
       response =>
       this.movieDetail = response
     );
     
-    responseService.getMoviePlay(this.movieId)
+    responseService.getMoviePlaying(this.movieId)
     .subscribe(
       response =>
       this.moviePlay = response.results[0]
@@ -30,9 +29,4 @@ export class MovieDetailComponent implements OnInit {
   }
   ngOnInit() {
   }
-  // setUp(){
-  //   console.log(this.moviePlay);
-  //   console.log(this.movieDetail);
-
-  // }
 }

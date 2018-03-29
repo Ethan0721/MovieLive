@@ -1,7 +1,8 @@
-.container{
+.body{
     color:white;
     background: black;
-    padding: 20px;
+    width: 100%;
+    padding:30px;
 }
 h1{
     margin: 80px;
@@ -35,13 +36,28 @@ ul{
 .movieType li{
     color: green;
 }
-
-
 .img-overlay {
     position: absolute;
     left : 45%;
-    top: 70px;
-    color:white !important;
+    top: 45%;
+    /* color:white !important; */
     opacity: .7;
+    width: 40px;
 }
-
+.image-wrapper{
+    min-width: 200px;
+    min-height:200px;
+}
+#movie-title{
+    font-size: 40px;
+}
+/* .tooltiptext {
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+        position: absolute;
+    z-index: 1;
+} */
