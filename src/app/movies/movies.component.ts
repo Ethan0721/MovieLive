@@ -29,7 +29,7 @@ export class MoviesComponent implements OnInit {
     // this.changeUrl();
   }
   getUpcommingMovies() : IMovie[]{
-    this.responseService.getUpcomminMovies().subscribe(
+    this.responseService.getUpcommingMovies().subscribe(
       response =>
       this.moviesResult = response.results);
 

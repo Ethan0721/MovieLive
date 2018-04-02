@@ -1,11 +1,6 @@
 <!-- <ng-progress></ng-progress> -->
 
-<!-- <fa name="cog" animation="spin"></fa>
-
-<i class="fa fa-camera-retro fa-lg"></i> fa-lg -->
-
-
-<ngb-carousel >
+<!-- <ngb-carousel >
     <ng-template ngbSlide id ="bg">
       <img src="{{url}}01.jpg" alt="Random first slide">
       <div class="carousel-caption">
@@ -27,9 +22,7 @@
         <p>This carousel uses customized default values.</p>
       </div>
     </ng-template>
-  </ngb-carousel>
-
-
+  </ngb-carousel> -->
 
 
 <!-- <div id = "bg">
@@ -39,3 +32,109 @@
         BEST PICTURE
     </div>
 </div> -->
+
+
+
+<!-- <div class="container-fluid">
+  <ngb-carousel>
+    <ng-template ngbSlide *ngFor="let movie of movies">
+      <img src="https://image.tmdb.org/t/p/original{{movie?.poster_path}}" width="100%" alt="Random first slide">
+      <div class="bottom-bar">
+        <div class="title-container container">
+          <div class="row justify-content-between">
+            <div class="col">
+              <span class="fa fa-play-circle">
+              </span>
+              <span>{{movie.title}}</span>
+            </div>
+            <div class="col-3">
+              <ngb-rating class="star-rating" [(rate)]="movie.vote_average" [starTemplate]="t" [readonly]="true" max="10"></ngb-rating>
+            </div>
+          </div>
+          <div class="row">
+            <h6 class="pb-3"> {{ movie.overview }} </h6>
+          </div>
+
+        </div>
+
+        <ng-template #t let-fill="fill">
+          <span *ngIf="fill === 100" class="star full">&#9733;</span>
+          <span *ngIf="fill === 0" class="star">&#9733;</span>
+          <span *ngIf="fill < 100 && fill > 0" class="star">
+            <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+          </span>
+        </ng-template>
+      </div>
+
+    </ng-template>
+
+  </ngb-carousel>
+
+</div> -->
+<app-nav-bar></app-nav-bar>
+<div class="table-body">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <table class="col-md-8 table borderless">
+      <tbody>
+        <th colspan="4">Top Movies</th>
+        <th colspan="4">In Theaters</th>
+        
+        <tr>
+          <td colspan="4" rowspan="5">
+            <a routerLink='/movie/{{topMovies[2].id}}'>
+              <img class="img-fluid" src = "{{image_url}}{{topMovies[2].backdrop_path}}">
+              <span class ="top-left">{{topMovies[2].title}}</span>
+            </a> 
+          </td>
+
+          <td colspan="2" rowspan="3"> 
+            <a routerLink='/movie/{{theaterMovies[1].id}}'>
+              <img class="img-fluid" src = "{{image_url}}{{theaterMovies[1].backdrop_path}}">
+              <span class ="top-right-left">{{theaterMovies[1].title}}</span>
+            </a>
+          </td>
+          
+          <td colspan="2" rowspan="3"> 
+            <a routerLink='/movie/{{theaterMovies[3].id}}'>
+              <img class="img-fluid" src = "{{image_url}}{{theaterMovies[3].backdrop_path}}">
+              <span class ="top-right-right">{{theaterMovies[3].title}}</span>
+            </a>
+          </td>
+        </tr>
+        
+        <tr class="void"></tr>
+        <tr class="void"></tr>
+        
+        <tr>
+          <td colspan="4" rowspan="5"> 
+            <a routerLink='/movie/{{theaterMovies[2].id}}'> 
+              <img class="img-fluid" src = "{{image_url}}{{theaterMovies[2].backdrop_path}}">  
+              <span class ="bottom-right">{{theaterMovies[2].title}}</span>
+            </a>
+          </td>
+        </tr>
+        <tr class="void"></tr>
+        <tr>
+          <td colspan="2" rowspan="3">
+            <a routerLink='/movie/{{topMovies[14].id}}'>
+              <img class="img-fluid" src ="{{image_url}}{{topMovies[14].backdrop_path}}">
+              <span class ="bottom-left-left">{{topMovies[14].title}}</span>
+            </a>      
+          </td>
+          <td colspan="2" rowspan="3">
+            <a routerLink='/movie/{{topMovies[4].id}}'>
+              <img class="img-fluid" src = "{{image_url}}{{topMovies[4].backdrop_path}}">
+              <span class ="bottom-left-right">{{topMovies[4].title}}</span>
+            </a>
+          </td>
+        </tr>
+
+
+        <tr class="void"></tr>
+        <tr class="void"></tr>
+      </tbody>
+    </table>
+    <div class="col-md-2"></div>
+  </div>
+</div>

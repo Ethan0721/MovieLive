@@ -7,6 +7,8 @@ import { AppError } from '../shared/app.error';
 import { NotFoundError } from '../shared/not.found.error';
 import { IMovie } from '../shared/Movies';
 import { IMovieGenre, IGenre } from '../shared/Genre';
+import { BadInputError } from '../shared/bad.input.error';
+
 @Injectable()
 // export class ResponseService extends AbstractBaseService<IuserResponse>{
 
@@ -26,7 +28,8 @@ export class ResponseService {
         .catch(this.handleError);
     }
     getUpcommingMovies() : Observable <IuserResponse>{
-        return this._http.get(this.url+'upcomming' + this.api_token)
+        return this._http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=e7ec5de68c5c7f163beab4e361e6245d&language=en-US&page=1'
+        )
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
     }
@@ -40,15 +43,24 @@ export class ResponseService {
         .map(resp => resp as IMovie)
         .catch(this.handleError);
     }
-    getMoviePlaying(movieId : number) : Observable <IuserResponse>{
+    getPlayingVideo(movieId : number) : Observable <IuserResponse>{
         return this._http.get(this.url+ movieId + '/videos' + this.api_token)
+        .map(resp => resp as IuserResponse)
+        .catch(this.handleError);
+    }
+    getMoviePlaying(pageId : number):Observable<IuserResponse>{
+        return this._http.get(this.url+"now_playing"+this.api_token+"&language=en-US&page="+pageId)
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
     }
    
     
     private handleError(error: Response) {
+        
+        if (error.status === 400) { return Observable.throw(new BadInputError(error.json())); }
+
         // if (error.status === 400) { return Observable.throw(new BadInputError(error.json())); }
+        
         if (error.status === 404) { return Observable.throw(new NotFoundError()); }
         return Observable.throw(new AppError(error));
     }

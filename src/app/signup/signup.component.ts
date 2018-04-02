@@ -15,10 +15,10 @@ export class SignupComponent {
  
   message : string;
   userList : IUser[] = [];
+  errorMessage  = "";
   constructor(private authService : AuthService, private router : Router) { 
-  
-    
-    // console.log(this.temp.Message);
+   
+
   }
   // DoSignUp(){
   //   this.authService.signUp(this.userList,this.password,this.confirmpassword )
@@ -28,6 +28,13 @@ export class SignupComponent {
   //   );
   // }
   addUser(form){
-    console.log(form);
+    // console.log(form.value.username);
+    // console.log(form.value.password);
+    this.authService.signUp(form.value.username,form.value.password,form.value.confirmpassword)
+    .subscribe(
+      data => this.temp=data,
+      error => this.errorMessage=error,
+      () => this.router.navigate(['/login'])
+    )
   }
 }

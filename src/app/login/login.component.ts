@@ -17,11 +17,15 @@ export class LoginComponent implements OnInit {
     username : string;
     password : string; 
     isLogin : boolean = false;
+    errorMessage  = "";
   ngOnInit() {
   }
   Dologin(){
-    this.authSevice.login(this.username, this.password).subscribe(
-      data => this.tokenParam = data
+    this.authSevice.login(this.username, this.password)
+    .subscribe( 
+      data => this.tokenParam=data,
+      error => this.errorMessage=error,
+      ()=>this.router.navigate(['/'])
     );
     // this.isLogin();
     // console.log(this.tokenParam.access_token);

@@ -15,13 +15,14 @@ export class MovieDetailComponent implements OnInit {
   moviePlay : any;
   constructor(private _route: ActivatedRoute, private responseService: ResponseService) {
     this.movieId = this._route.snapshot.params['id'];
+    
     responseService.getMovieById(this.movieId)
     .subscribe(
       response =>
       this.movieDetail = response
     );
     
-    responseService.getMoviePlaying(this.movieId)
+    responseService.getPlayingVideo(this.movieId)
     .subscribe(
       response =>
       this.moviePlay = response.results[0]

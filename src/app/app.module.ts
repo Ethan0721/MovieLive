@@ -19,6 +19,7 @@ import { NgbdCarouselConfig} from './movies/movie-caro/movie-caro.component';
 import { NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { NgProgressModule} from 'ngx-progressbar';
 
+
 import { RouterModule } from "@angular/router";
 
 import { ResponseService } from './services/response.service';
@@ -45,6 +46,7 @@ import { GenreComponent } from './genre/genre.component';
     NavBarComponent,
     MovieFilterComponent,
     NotFoundComponent,
+    
     NgbdCarouselConfig,
     MovieBodyComponent,
     LoginComponent,
@@ -69,6 +71,8 @@ import { GenreComponent } from './genre/genre.component';
       { path: 'login', component: LoginComponent, data : {title : "Log in "}},
       { path : 'movie/:id', component : MovieDetailComponent},
       { path : 'signup', component : SignupComponent}, 
+      { path: '**', component: NotFoundComponent }
+
     ])
   ],
   providers: [

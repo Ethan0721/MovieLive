@@ -15,17 +15,37 @@ export class HomeComponent implements OnInit{
 
   post : any;
   url : string;
+  topMovies: IMovie[];
+  image_url = "http://image.tmdb.org/t/p/original/";
+  theaterMovies: IMovie[];
+  
   constructor(progressService: NgProgress, 
               config: NgbCarouselConfig, 
-              private http: HttpClient){
+              private http: HttpClient,
+              private responseService: ResponseService  
+            ){
       config.interval = 10000;
       config.wrap = true;
       config.keyboard = false;
+     
           }
   
-  ngOnInit(){
-       
-     this.url = "../../../assets/images/main";
+  ngOnInit(){       
+   
+    //  this.url = "../../../assets/images/main";
+    this.responseService.getMoviePlaying(1)
+    .subscribe(
+        res=>{  
+          this.theaterMovies=res.results;
+        }
+      );
+
+     this.responseService.getTopMovies(1)
+      .subscribe(
+        m => {
+          this.topMovies = m.results;
+        }
+      );
  //   const sampleUrl = 'http://moonlight.movie/assets/images/header/main02.jpg';
     // this.progressService.start();
     // setTimeout(() => {
