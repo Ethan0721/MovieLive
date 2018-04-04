@@ -2,7 +2,7 @@
 <ngbd-carousel-config></ngbd-carousel-config>
 <br>
 <div class ="section-container">
-    <h3 class="section-header">{{ movieType | titlecase}} Movie Section</h3><hr>
+    <h3 class="section-header"> Movie Section</h3><hr>
     <div class="row"> 
       <div class = "col-md-2" >
         <!-- <app-genre></app-genre> -->
@@ -38,11 +38,23 @@
 <br>
     <div class="section-footer">
      <div class="row">
-      <div class="col-md-3" id = "page-text" >Currently on page: {{pageId}}</div>
+      <div class="col-md-3" id = "page-text" >Currently on page: {{pageId}}  </div>
       <div class="col-md-7"></div>
       <div class="col-md-2">
-        <button class="btn btn-info" (click)= "decrement()" *ngIf="pageId>1" routerLink="/{{urlsegmant}}" [queryParams]="{ pageId: +pageId-1 }" >&#9794;</button> 
-        <button class = "btn btn-danger" (click) = "increment()" routerLink="/{{urlsegmant}}" [queryParams]="{ pageId:  +pageId+1  } " >&#9792;</button>        
+        <button class="btn btn-info" (click)= "decrement()" *ngIf="(pageId>1 &&  [movieType] != 'genre') ; else genreDecrementButton" routerLink="/{{movieType}}" [queryParams]="{ pageId: +pageId-1 }" >&#9794;</button> 
+        <button class = "btn btn-danger" (click) = "increment()"  *ngIf="[movieType] != 'genre' else genreIncrementButton" routerLink="/{{movieType}}" [queryParams]="{ pageId:  +pageId+1  } " >&#9792;</button>        
+        
+        <ng-template  #genreDecrementButton>
+            <button class="btn btn-info" (click)= "decrement()" *ngIf="(pageId>1)" routerLink="/{{movieType}}/{{genreId}}" [queryParams]="{ pageId: +pageId-1 }" >&#9794;</button> 
+        </ng-template>
+
+        <ng-template  #genreIncrementButton>
+            <button class = "btn btn-danger" (click) = "increment()" routerLink="/{{movieType}}/{{genreId}}" [queryParams]="{ pageId:  +pageId+1  } " >&#9792;</button>        
+        </ng-template>
+
+
+
+
       </div>
      </div>
     </div>

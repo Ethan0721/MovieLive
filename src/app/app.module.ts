@@ -77,6 +77,7 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
       { path:'popular', component : MovieBodyComponent },
       { path:'top', component : MovieBodyComponent },
       { path:'nowplaying', component : MovieBodyComponent },
+      { path:'upcomming', component : MovieBodyComponent },
       { path :'genre/:id' , component : MovieBodyComponent},
 
       { path: 'login', component: LoginComponent, data : {title : "Log In "}},

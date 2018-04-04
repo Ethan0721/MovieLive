@@ -28,8 +28,7 @@ export class ResponseService {
         .catch(this.handleError);
     }
     getUpcommingMovies(pageId:number) : Observable <IuserResponse>{
-        return this._http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=e7ec5de68c5c7f163beab4e361e6245d&language=en-US&page='+pageId
-        )
+        return this._http.get(this.url+"upcoming"+this.api_token+"&language=en-US&page="+pageId)
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
     }

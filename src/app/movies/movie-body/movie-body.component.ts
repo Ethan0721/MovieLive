@@ -25,7 +25,7 @@ export class MovieBodyComponent implements OnInit {
   movieType : string;
   constructor(private _activeRoute: ActivatedRoute, 
               private responseService: ResponseService,
-              private router : Router,
+              // private router : Router,
               private genreService : GenreService 
               )
           { 
@@ -54,6 +54,8 @@ export class MovieBodyComponent implements OnInit {
     }
     else if (this.movieType ==="nowplaying"){
       this.getMoviePlaying(+this.pageId);
+    }else if (this.movieType ==="upcomming"){
+      this.getUpcommingMovies(+this.pageId);
     }
     else if (this.movieType ==="genre"){
     this._activeRoute.params
@@ -103,6 +105,13 @@ export class MovieBodyComponent implements OnInit {
       this.moviesResult = response.results   
     );
    }
+   getUpcommingMovies(pageId: number){
+    this.responseService.getUpcommingMovies(+pageId)
+    .subscribe(
+      response =>
+      this.moviesResult = response.results   
+    );
+   } 
    getGenre(){
     this.genreService.getGenreList()
     .subscribe(
