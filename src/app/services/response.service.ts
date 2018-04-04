@@ -27,17 +27,17 @@ export class ResponseService {
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
     }
-    getUpcommingMovies() : Observable <IuserResponse>{
-        return this._http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=e7ec5de68c5c7f163beab4e361e6245d&language=en-US&page=1'
+    getUpcommingMovies(pageId:number) : Observable <IuserResponse>{
+        return this._http.get('https://api.themoviedb.org/3/movie/upcoming?api_key=e7ec5de68c5c7f163beab4e361e6245d&language=en-US&page='+pageId
         )
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
     }
-    getGenresMovie(genreId : number ): Observable<IuserResponse>{
-        return this._http.get( this.url+ "&with_genres" + genreId + "&language=en-US&page=1")
-        .map(resp => resp as IuserResponse)
-        .catch(this.handleError);
-    }
+    // getGenresMovie(genreId : number ): Observable<IuserResponse>{
+    //     return this._http.get( this.url+ "&with_genres" + genreId + "&language=en-US&page=1")
+    //     .map(resp => resp as IuserResponse)
+    //     .catch(this.handleError);
+    // }
     getMovieById(movieId : number ): Observable <IMovie>{
         return this._http.get(this.url+movieId+this.api_token)
         .map(resp => resp as IMovie)
@@ -50,6 +50,11 @@ export class ResponseService {
     }
     getMoviePlaying(pageId : number):Observable<IuserResponse>{
         return this._http.get(this.url+"now_playing"+this.api_token+"&language=en-US&page="+pageId)
+        .map(resp => resp as IuserResponse)
+        .catch(this.handleError);
+    }
+    getGenreMovie(genreId : number, pageId : number){
+        return this._http.get("https://api.themoviedb.org/3/discover/movie"+this.api_token+"&language=en-US&with_genres="+genreId +"&page="+pageId)
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
     }

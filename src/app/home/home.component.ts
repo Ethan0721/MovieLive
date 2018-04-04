@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit{
   topMovies: IMovie[];
   image_url = "http://image.tmdb.org/t/p/original/";
   theaterMovies: IMovie[];
-  
+
   constructor(progressService: NgProgress, 
               config: NgbCarouselConfig, 
               private http: HttpClient,
@@ -61,23 +61,6 @@ export class HomeComponent implements OnInit{
     //   });      
     // this.progressService.done();
     // this.url = "../../../assets/images/main02.jpg";
-    
+    console.log(this.topMovies);
   }
-
-//   constructor(private responseService: ResponseService) { 
-//     responseService.getAllMovies().subscribe(
-//     response =>
-//     this.moviesResult = response.results
-//   );
-// }
-// getallMovies() : any{
-//   return this.moviesResult;
-// }
-// getTopMovies() {
-//     for(var i =0; i <=5; i++){
-//       this.topMovies.push(this.allMovies[i]);
-//     }
-//     console.log(this.topMovies.length);
-//     return this.topMovies;
-//   }
 }

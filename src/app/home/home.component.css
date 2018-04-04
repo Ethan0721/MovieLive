@@ -1,79 +1,43 @@
-/* #bg {
-    position: fixed; 
-    top: -50%; 
-    left: -50%; 
-    width: 200%; 
-    height: 200%;
-}
-#bg img{
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    bottom: 0; 
-    margin: auto; 
-    min-width: 50%;
-    min-height: 50%;
-}
-.header-content{
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-} */
-/* .star {
-    position: relative;
-    display: inline-block;
-    font-size: 1.3rem;
-    color: #d3d3d3;
-  } */
-  img{
-      margin : 0px;
-      padding: 0px;
-  }
- 
-  .table-body,
-  table, 
-  tbody, 
-  tr, 
-  th,
-  td,
-  span
-    {
+img,
+table, 
+tbody, 
+tr, 
+th,
+td,
+span{
       padding: 0px;
       margin : 0px;
   }
-  span {
+span {
     color: white;
     text-shadow: 2px 2px 4px #000000;
     font-size: 20px;
   }
- .bottom-right{
+  .bottom-right, .top-right-left, .top-right-right,.top-left,
+  .bottom-left-left,.bottom-left-right{
     position: absolute;
-    bottom: 68px;
+  }
+ .bottom-right{
+    bottom: 50px;
     right:38%;
 }
 .top-right-left{
-    position: absolute;
     bottom: 70%;
     right:40%;
 }
 .top-right-right{
-    position: absolute;
     bottom: 70%;
     right:5%;
 }
 .top-left{
-    position: absolute;
     bottom: 40%;
     left:6%;
 }
 .bottom-left-left{
-    position: absolute;
     bottom:5%;
     left:5%;
 }
 .bottom-left-right{
-    position: absolute;
     bottom:5%;
     left:30%;
 }

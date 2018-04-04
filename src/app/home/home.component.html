@@ -82,14 +82,14 @@
         
         <tr>
           <td colspan="4" rowspan="5">
-            <a routerLink='/movie/{{topMovies[2].id}}'>
-              <img class="img-fluid" src = "{{image_url}}{{topMovies[2].backdrop_path}}">
-              <span class ="top-left">{{topMovies[2].title}}</span>
+            <a routerLink='/movie/{{topMovies[4]?.id}}'>
+              <img class="img-fluid" src = "{{image_url}}{{topMovies[4]?.backdrop_path}}">
+              <span class ="top-left">{{topMovies[3].title}}</span>
             </a> 
           </td>
 
           <td colspan="2" rowspan="3"> 
-            <a routerLink='/movie/{{theaterMovies[1].id}}'>
+            <a routerLink='/movie/{{theaterMovies[1]?.id}}'>
               <img class="img-fluid" src = "{{image_url}}{{theaterMovies[1].backdrop_path}}">
               <span class ="top-right-left">{{theaterMovies[1].title}}</span>
             </a>

@@ -35,7 +35,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter.pipe';
-import { GenreComponent } from './genre/genre.component';
+// import { GenreComponent } from './genre/genre.component';
 // import { EmbedVideoService } from 'ngx-embed-video';
 
 @NgModule({
@@ -54,7 +54,7 @@ import { GenreComponent } from './genre/genre.component';
     SignupComponent,
     MoviePopularPipe,
     ReleaseYearFilterPipe,
-    GenreComponent,
+    // GenreComponent,
     ],
   imports: [
     BrowserModule,
@@ -65,12 +65,24 @@ import { GenreComponent } from './genre/genre.component';
     AngularFontAwesomeModule,
     NgProgressModule,
     RouterModule.forRoot([  
-      { path: '', component : HomeComponent },
-      { path: 'movies/popular', component:  MovieBodyComponent },
-      { path : 'genre/:id' , component : GenreComponent},
-      { path: 'login', component: LoginComponent, data : {title : "Log in "}},
+      { path: '', component : HomeComponent},
+    //   { path: 'movies', component:  MovieBodyComponent,
+    //   children : [
+    //       { path:'popular', component : MovieBodyComponent },
+    //       { path:'top', component : MovieBodyComponent },
+    //       { path: 'upcoming', component: MovieBodyComponent}
+    //     ]
+    // },
+      
+      { path:'popular', component : MovieBodyComponent },
+      { path:'top', component : MovieBodyComponent },
+      { path:'nowplaying', component : MovieBodyComponent },
+      { path :'genre/:id' , component : MovieBodyComponent},
+
+      { path: 'login', component: LoginComponent, data : {title : "Log In "}},
+      { path : 'signup', component : SignupComponent, data : {title : "Sign Up "}}, 
+      
       { path : 'movie/:id', component : MovieDetailComponent},
-      { path : 'signup', component : SignupComponent}, 
       { path: '**', component: NotFoundComponent }
 
     ])

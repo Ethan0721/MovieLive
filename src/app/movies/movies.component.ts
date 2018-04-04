@@ -17,7 +17,7 @@ export class MoviesComponent implements OnInit {
   }
   constructor(private responseService: ResponseService) {
     // this.pageId = 1; 
-    this.getUpcommingMovies();
+    // this.getUpcommingMovies();
    }
 
   getMovies() : any{
@@ -28,13 +28,13 @@ export class MoviesComponent implements OnInit {
     // this.pageId=$event;
     // this.changeUrl();
   }
-  getUpcommingMovies() : IMovie[]{
-    this.responseService.getUpcommingMovies().subscribe(
-      response =>
-      this.moviesResult = response.results);
+  // getUpcommingMovies() : IMovie[]{
+  //   this.responseService.getUpcommingMovies().subscribe(
+  //     response =>
+  //     this.moviesResult = response.results);
 
-      return this.moviesResult;
-   }
+  //     return this.moviesResult;
+  //  }
 
   
 }

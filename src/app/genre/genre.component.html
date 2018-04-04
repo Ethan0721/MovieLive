@@ -1,12 +1,2 @@
 
 
-<nav class="hidden-xs-down bg-faded sidebar secion-sidebar">
-    <ul class="nav nav-pills flex-column sticky-top">
-      <!-- <li class="nav-item">
-        <a class="nav-link active">GENRES<span class="sr-only">(current)</span></a>
-      </li> -->
-      <li *ngFor="let k of genres" class="nav-item">
-        <a class="nav-link"  [routerLink]="['/genre/', k.id]">{{k.name}}</a>
-      </li>
-    </ul>
-</nav><hr>

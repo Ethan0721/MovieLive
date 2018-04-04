@@ -2,10 +2,22 @@
 <ngbd-carousel-config></ngbd-carousel-config>
 <br>
 <div class ="section-container">
-    <h3 class="section-header">Movie Section</h3><hr>
+    <h3 class="section-header">{{ movieType | titlecase}} Movie Section</h3><hr>
     <div class="row"> 
       <div class = "col-md-2" >
-        <app-genre></app-genre>
+        <!-- <app-genre></app-genre> -->
+        
+        <nav class="hidden-xs-down bg-faded sidebar secion-sidebar">
+          <ul class="nav nav-pills flex-column sticky-top">
+            <!-- <li class="nav-item">
+              <a class="nav-link active">GENRES<span class="sr-only">(current)</span></a>
+            </li> -->
+            <li *ngFor="let g of genres" class="nav-item">
+              <a class="nav-link"  [routerLink]= "['/genre/', g.id ]" [queryParams]="{ pageId:1 }">{{g.name}}</a>
+            </li>
+          </ul>
+        </nav><hr>
+
       </div>
       <div class="col-md-10 section-body">
         <div class="row"><!-- pipe filter add in movieResult   | paginate: { itemsPerPage: 10, currentPage: p }" -->
@@ -29,9 +41,8 @@
       <div class="col-md-3" id = "page-text" >Currently on page: {{pageId}}</div>
       <div class="col-md-7"></div>
       <div class="col-md-2">
-        <button class="btn btn-info" (click)= "decrement()" *ngIf="pageId>1" [routerLink]="['/movies/popular']" [queryParams]="{ pageId: +pageId-1 }" >&#9794;</button> 
-        <button class = "btn btn-danger" (click) = "increment()" [routerLink]="['/movies/popular']" [queryParams]="{ pageId:  +pageId+1  } " >&#9792;</button>
-        <!-- [routerLink]="['/movies/']" [queryParams]="{ page: pageId }" -->
+        <button class="btn btn-info" (click)= "decrement()" *ngIf="pageId>1" routerLink="/{{urlsegmant}}" [queryParams]="{ pageId: +pageId-1 }" >&#9794;</button> 
+        <button class = "btn btn-danger" (click) = "increment()" routerLink="/{{urlsegmant}}" [queryParams]="{ pageId:  +pageId+1  } " >&#9792;</button>        
       </div>
      </div>
     </div>

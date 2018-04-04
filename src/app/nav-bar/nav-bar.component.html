@@ -14,8 +14,9 @@
       <li ngbDropdown class="nav-item" routerLinkActive='active'>
         <a  class="nav-link" id="dropdownBasic1" ngbDropdownToggle> Movies </a>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button class="dropdown-item"  routerLink='/movies/popular' [queryParams]="{pageId: 1}">Popular</button>
-          <button class="dropdown-item" routerLink='/movies/top' >Top</button>
+          <button class="dropdown-item"  routerLink='/popular' [queryParams]="{pageId: 1}">Popular</button>
+          <button class="dropdown-item" routerLink='/top' [queryParams]="{pageId: 1}">Top</button>
+          <button class="dropdown-item" routerLink='/nowplaying' [queryParams]="{pageId: 1}">Nowplaying</button>
         </div>
       </li>
       <li class="nav-item" routerLinkActive='active'>
