@@ -1,6 +1,49 @@
 .navbar{
     height : 150px;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
     font-weight: bold;
     font-size: 130%;
+}
+ul{
+    list-style-type: none;
+    margin:1px;
+}
+li{
+    margin:0px;
+    padding:0px;
+}
+#dropdown-box{
+    position:absolute;
+    z-index:1;
+    /* width:100%; */
+    width:400px;
+    max-height:300px;
+    top:95px;
+    background-color:rgb(241, 239, 239);
+    overflow-y:auto;
+    font-size: 15px;
+    padding:0px;
+    margin:0px;
+}
+.search-bar input {
+    width:400px;
+}
+.movie-name{
+    color:blueviolet;
+    padding:2px; 
+    /* margin:0px;  */
+}
+.default-search{
+    padding:15px;
+    /* margin-top: 3px; */
+}
+.movie-name:hover{
+    background-color: #c2c2c2;
+}
+i, li {
+    display: inline-block;
+}
+.message{
+    font-size: 18px !important;
+    font-weight: bold;
 }

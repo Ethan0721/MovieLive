@@ -4,13 +4,11 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active"  routerLinkActive='active' >
         <a class="nav-link"  routerLink='/'  href="#"  >Home<span class="sr-only">(current)</span></a>
       </li>
-      <!-- <li class="nav-item" routerLinkActive='active'>
-        <a class="nav-link" routerLink='/movies' href="#">Popular</a>
-      </li> -->
       <li ngbDropdown class="nav-item" routerLinkActive='active'>
         <a  class="nav-link" id="dropdownBasic1" ngbDropdownToggle> Movies </a>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -20,19 +18,41 @@
           <button class="dropdown-item" routerLink='/upcomming' [queryParams]="{pageId: 1}">Upcomming</button>
         </div>
       </li>
-      <li class="nav-item" routerLinkActive='active'>
-        <a class="nav-link" routerLink='/login' href="#">Login</a>
-      </li>
-      <li class="nav-item" routerLinkActive='active'>
-        <a class="nav-link" routerLink='/signup' href="#">SignUp</a>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li> -->
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    
+    <div class="form-group form-inline  mr-auto search-bar" (clickOutside)="onClickedOutside()">
+        <input (click)="toggleDropDown()" id="typeahead"  type="text" class="form-control mr-sm-2" [class.is-invalid]="searchFailed" [(ngModel)]="model"  placeholder="Movie Search" />
+        <div class="dropdown-item mr-sm-2" id = "dropdown-box">
+          <div  *ngIf="showDropDown">  
+            <ul class="movie-name" *ngFor="let n of searchResult">
+              <a class="nav-link"  routerLink= "/movie/{{n.id}}"><i class="fa fa-search" aria-hidden="true"></i>
+                <li>{{n.title}}</li>
+              </a>  
+            </ul>
+          </div>
+           <div class="default-search dropdown-item" *ngIf="showDropDown && searchResult.length==0 && inputValue.length>2">
+            <span class="message">No Movies Found</span>
+          </div> 
+          <div class="default-search dropdown-item" *ngIf="showDropDown && searchResult.length==0">
+            <span class="message">Popular Movies Now</span>
+            <ul *ngFor="let d of defaultResult" class="default-movie movie-name" >
+              <a class="nav-link"  routerLink= "/movie/{{d.id}}"><i class="fa fa-search" aria-hidden="true"></i>
+                <li>{{d.title}}</li></a>  
+            </ul>
+          </div>
+        </div> 
+        </div>      
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" routerLinkActive='active'>
+            <a class="nav-link" routerLink='/login' href="#">Login</a>
+          </li>
+          <li class="nav-item" routerLinkActive='active'>
+            <a class="nav-link" routerLink='/signup' href="#">SignUp</a>
+          </li>
+        </ul>
+          <!-- <div>
+          <span *ngIf="searching">searching...</span>
+          <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
+        </div> -->
   </div>
 </nav>

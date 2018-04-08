@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../services/movies.service';
+// import { MoviesService } from '../services/movies.service';
 import { IMovie } from '../shared/Movies';
 import { ActivatedRoute, Route } from '@angular/router';
 import { ResponseService } from '../services/response.service';

@@ -3,9 +3,10 @@ import { AuthService} from './services/auth.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { BrowserModule } from '@angular/platform-browser';
+import { ClickOutsideModule } from 'ng4-click-outside';
 
 import { MoviesComponent } from './movies/movies.component';
-import { MoviesService } from './services/movies.service';
+// import { MoviesService } from './services/movies.service';
 import { MovieFilterComponent } from './movies/movie-filter/movie-filter.component';
 import { MovieBodyComponent } from './movies/movie-body/movie-body.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
@@ -28,15 +29,13 @@ import { GenreService } from './services/genre.service';
 import { FormsModule } from '@angular/forms';
 import { FilterService } from './services/filter.service';
 
+
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-
 import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter.pipe';
-// import { GenreComponent } from './genre/genre.component';
-// import { EmbedVideoService } from 'ngx-embed-video';
 
 @NgModule({
   declarations: [
@@ -64,16 +63,9 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
     FormsModule,
     AngularFontAwesomeModule,
     NgProgressModule,
+    ClickOutsideModule,
     RouterModule.forRoot([  
       { path: '', component : HomeComponent},
-    //   { path: 'movies', component:  MovieBodyComponent,
-    //   children : [
-    //       { path:'popular', component : MovieBodyComponent },
-    //       { path:'top', component : MovieBodyComponent },
-    //       { path: 'upcoming', component: MovieBodyComponent}
-    //     ]
-    // },
-      
       { path:'popular', component : MovieBodyComponent },
       { path:'top', component : MovieBodyComponent },
       { path:'nowplaying', component : MovieBodyComponent },
@@ -91,7 +83,7 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
   providers: [
     NgbdCarouselConfig,
     FilterService,
-    MoviesService,
+    // MoviesService,
     ResponseService,
     AuthService,
     GenreService 

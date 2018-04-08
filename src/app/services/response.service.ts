@@ -32,11 +32,6 @@ export class ResponseService {
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
     }
-    // getGenresMovie(genreId : number ): Observable<IuserResponse>{
-    //     return this._http.get( this.url+ "&with_genres" + genreId + "&language=en-US&page=1")
-    //     .map(resp => resp as IuserResponse)
-    //     .catch(this.handleError);
-    // }
     getMovieById(movieId : number ): Observable <IMovie>{
         return this._http.get(this.url+movieId+this.api_token)
         .map(resp => resp as IMovie)

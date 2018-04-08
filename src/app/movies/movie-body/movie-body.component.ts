@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../../shared/Movies';
-import { MoviesService } from '../../services/movies.service';
+// import { MoviesService } from '../../services/movies.service';
 import { IuserResponse} from '../../shared/userResponse';
 import { ResponseService } from '../../services/response.service';
 import {GenreService} from '../../services/genre.service';
