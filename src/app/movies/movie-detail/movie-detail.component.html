@@ -1,5 +1,7 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="container-fluid">
   <div class="movie-section">
+    <a name ="page-top"></a>
     <h1 class="my-4 movieTitle" >{{movieDetail?.title}}  <span id="sub_title">{{movieDetail?.release_date | date:'yyyy'}} </span></h1> 
   <div class="row">
     <div class="col-md-1"></div>
@@ -40,20 +42,20 @@
   <hr>
 </div>
 <div class="cast-section">
-  <h4 class="section-header">Top Billed Cast</h4>
+    <h4 class="col-md-12 section-header">Top Billed Cast</h4>
 <div class="row">
     <div class="left-side-bar col-md-1"></div>
     <div class="col-md-9 middle-side" >
       <ng-container  *ngFor="let c of movieCast; let i=index">
-        <div class="card-deck" style="width: 12rem;" *ngIf="i<5" >
+        <div class="card-deck" *ngIf="i<5 && [c.profile_path] !='' " >
           <div class="card">
             <img class="card-img-top" src="http://image.tmdb.org/t/p/w185/{{c.profile_path}}" alt="Card image cap">
             <div class="card-body" >
               <h6 class= "card-title card-name"><strong>{{c.name}}</strong></h6>  
               <h6 class= "card-title card-charachter">{{c.character}}</h6>    
-            </div>
           </div>  
         </div>
+      </div>
       </ng-container>
     </div>
       <div class="right-side-bar col-md-2"></div>

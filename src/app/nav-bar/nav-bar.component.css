@@ -1,6 +1,5 @@
 .navbar{
     height : 150px;
-    /* font-family: 'Courier New', Courier, monospace; */
     font-weight: bold;
     font-size: 130%;
 }
@@ -15,7 +14,6 @@ li{
 #dropdown-box{
     position:absolute;
     z-index:1;
-    /* width:100%; */
     width:400px;
     max-height:300px;
     top:95px;
@@ -46,4 +44,8 @@ i, li {
 .message{
     font-size: 18px !important;
     font-weight: bold;
+}
+.movie-type{
+    text-align: center;
+
 }
