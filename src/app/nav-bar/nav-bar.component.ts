@@ -48,10 +48,10 @@ export class NavBarComponent implements AfterViewInit, OnInit {
   }
   toggleDropDown(){
     this.showDropDown = !this.showDropDown;
-    console.log(this.showDropDown);
+    // console.log(this.showDropDown);
   }
   onClickedOutside(e: Event) {
-    console.log('Clicked outside:', e);
+    // console.log('Clicked outside:', e);
     this.showDropDown = false;
   }
   getPopularMovies(){

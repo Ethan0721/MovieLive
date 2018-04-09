@@ -6,12 +6,12 @@
     font-weight: bold;
     font-size: 35px;
 }
-.card-deck{
+/* .card-deck{
     margin:10px;
     padding: 5px;
-}
+} */
 .card {
-    width:16rem;
+    width:15rem;
     margin:0px;
 }
 .card-deck{

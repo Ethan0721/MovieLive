@@ -1,33 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
-import { MoviesService } from '../../services/movies.service';
 import { IMovie } from '../../shared/Movies';
 import { ResponseService } from '../../services/response.service';
-
+import { ICast } from '../../shared/Cast';
+import 'rxjs/add/operator/take';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-  movieDetail : any;
+  movieDetail : IMovie;
   movieId :  number;
   moviePlay : any;
-  constructor(private _route: ActivatedRoute, private responseService: ResponseService) {
+  movieCast : ICast[] =[];
+  similarMovie:IMovie[]=[];
+  constructor(private _route: ActivatedRoute, private responseService: ResponseService) {}
+  ngOnInit() {
     this.movieId = this._route.snapshot.params['id'];
     
-    responseService.getMovieById(this.movieId)
+    this.responseService.getMovieById(this.movieId)
     .subscribe(
       response =>
       this.movieDetail = response
     );
     
-    responseService.getPlayingVideo(this.movieId)
+    this.responseService.getPlayingVideo(this.movieId)
     .subscribe(
       response =>
       this.moviePlay = response.results[0]
     );
-  }
-  ngOnInit() {
+    
+    this.responseService.getCastMovie(this.movieId)
+    .subscribe(
+      res =>{
+      this.movieCast = res.cast
+      }
+    );
+
+    this.responseService.getSimilarMovie(this.movieId)
+    .subscribe(
+      res=>
+      this.similarMovie = res.results
+    );
   }
 }

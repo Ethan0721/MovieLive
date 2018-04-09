@@ -1,15 +1,16 @@
-<div class="body">
-  <h1 class="my-4 movieTitle" >{{movieDetail?.title}}  <span id = "sub_title">{{ movieDetail?.release_date | date:'yyyy'}} </span></h1> 
+<div class="container-fluid">
+  <div class="movie-section">
+    <h1 class="my-4 movieTitle" >{{movieDetail?.title}}  <span id="sub_title">{{movieDetail?.release_date | date:'yyyy'}} </span></h1> 
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-4">
-      <img class="img-fluid" src='https://image.tmdb.org/t/p/original{{movieDetail?.poster_path}}' alt="poster images">
+    <div class="col-md-3">
+      <img class="img-fluid poster" src="https://image.tmdb.org/t/p/w780{{movieDetail?.poster_path}}" alt="poster images">
       <div class="img-overlay">
           <a href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" placement="right" ngbTooltip="Play Trailer" target="_blank"><i class="fa fa-play-circle fa-5x"></i> </a>
       </div>
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-5">
+    <div class="col-md-1 col-sm-0"></div>
+    <div class="col-md-6 col-sm-12">
       <!-- <div class="image-wrapper">
         <img class="img-fluid" src='https://image.tmdb.org/t/p/original{{movieDetail?.backdrop_path}}' alt="poster images"> 
         <div class="img-overlay">
@@ -17,25 +18,103 @@
         </div>
       </div>
       <hr> -->
-      <h3 id= "movie-title"><strong>{{movieDetail?.title}}</strong></h3>
+      <h3 id= "movie-title">{{movieDetail?.original_title}}</h3>
       <br>
       <div id = "movieDetails">
         <ul>
-          <span>Overview</span><li>{{movieDetail?.overview}} </li>
-          <span>Movie type</span>: <li class = "movieType my-3" *ngFor="let md of movieDetail?.genres" >{{md?.name}} &nbsp;</li>
-          <li> <span>Relase year</span> :  {{movieDetail?.release_date}}</li>
-          <li> <span>Run time</span> : {{movieDetail?.runtime}} </li>
-          <li> <span>Revenue</span> : {{movieDetail?.revenue}} </li> 
-          <li> <span>Rating</span> : {{movieDetail?.vote_average}} </li>
-          <li> <span>Vote count</span>:  {{movieDetail?.vote_count}} </li>
+          <li><strong>Overview :</strong><br>{{movieDetail?.overview}}</li>
+          <strong>Movie Type :</strong> <li class = "movieType" *ngFor="let md of movieDetail?.genres" >{{md?.name}}/&nbsp;</li>
+          <li> <strong>Relase Year :</strong> {{movieDetail?.release_date}}</li>
+          <li> <strong>Run time :</strong> {{movieDetail?.runtime}} mins</li>
+          <li> <strong>Revenue :</strong> {{movieDetail?.revenue}} </li> 
+          <li> <strong>Rating :</strong> {{movieDetail?.vote_average}} </li>
+          <li> <strong>Vote Count :</strong>  {{movieDetail?.vote_count}} </li>
         </ul>
         <div> 
-          <span>Home page</span> :  <a href="{{movieDetail?.homepage}}">{{movieDetail?.homepage}}</a> 
+          <strong>Home Page:</strong> <a href="{{movieDetail?.homepage}}">{{movieDetail?.homepage}}</a> 
         </div>
       </div>
     </div>
+    <div class="col-md-1"></div>
   </div>
-  <!-- /.row -->
+  <hr>
+</div>
+<div class="cast-section">
+  <h4 class="section-header">Top Billed Cast</h4>
+<div class="row">
+    <div class="left-side-bar col-md-1"></div>
+    <div class="col-md-9 middle-side" >
+      <ng-container  *ngFor="let c of movieCast; let i=index">
+        <div class="card-deck" style="width: 12rem;" *ngIf="i<5" >
+          <div class="card">
+            <img class="card-img-top" src="http://image.tmdb.org/t/p/w185/{{c.profile_path}}" alt="Card image cap">
+            <div class="card-body" >
+              <h6 class= "card-title card-name"><strong>{{c.name}}</strong></h6>  
+              <h6 class= "card-title card-charachter">{{c.character}}</h6>    
+            </div>
+          </div>  
+        </div>
+      </ng-container>
+    </div>
+      <div class="right-side-bar col-md-2"></div>
+  </div>
+</div>
+<!-- <div class="similar-section">
+  <h4 class="section-header">Similar Movies</h4>
+  <div id="wrapper">
+      <div class="table">
+          <div class="tr" >
+              <div class="td">
+                  <div class="box"></div>
+              <div class="td">
+                  <div class="box"></div> 
+              </div> 
+              <div class="td">
+                  <div class="box"></div> 
+              </div> 
+              <div class="td">
+                  <div class="box"></div> 
+              </div> 
+              <div class="td">
+                  <div class="box"></div> 
+              </div> 
+          </div>
+      </div>
+  </div> 
+</div> -->
+
+  <!-- <div id="wrapper">
+      <div class="img-table">
+          <div class="img-tr"  *ngFor="let k of similarMovie;let i=index">
+              <div class="img-td" *ngIf="i<5" >
+                  <div class="img-box">ghjk</div> 
+              </div> 
+          </div>
+      </div>
+  </div>  -->
+  <!-- <div class="row"> -->
+    <!-- <div class="image-container">
+    <ng-container class="image-gallery" *ngFor="let k of similarMovie;let i=index">
+        <div class="card-deck " style="width: 20rem;"  *ngIf="i<10">
+          <div class="card img-card">
+            <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/original{{k.backdrop_path}}" alt="">
+          </div>
+        </div> -->
+        <!-- </div> -->
+        <!-- <ng-container  *ngFor="let c of movieCast; let i=index"> -->
+            <!-- <div class="card-deck" style="width: 11rem;" *ngIf="i<5" > -->
+              <!-- <div class="card"> -->
+                  <!-- <img class="card-img-top" src="http://image.tmdb.org/t/p/w185/{{c.profile_path}}" alt="Card image cap">
+                <div class="card-body" >
+                  <h5 class= "card-title card-name"><strong>{{c.name}}</strong></h5>  
+                  <h6 class= "card-title card-charachter">{{c.character}}</h6>    
+                </div>
+              </div>   -->
+      <!-- </ng-container>   
+    </div> -->
+        <!-- </div> -->
+
+<!-- </div> -->
 
   <!-- Related Projects Row -->
   <!-- <h3 class="my-4">Related Projects</h3> -->  

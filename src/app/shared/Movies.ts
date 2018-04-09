@@ -13,7 +13,7 @@ export interface IMovie {
     homepage:string;
     geners : IGenre[];
     backdrop_path : string;
-    asdsf : string;
-    // genre_ids : IGenre[];
-
+    vote_count:number;
+    runtime : string;
+    genres : IGenre[];
 }

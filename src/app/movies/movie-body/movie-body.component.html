@@ -24,7 +24,9 @@
           <ng-container>
             <div class="card-deck" *ngFor="let m of moviesResult">
               <div class="card">
-                  <a routerLink='/movie/{{m.id}}'> <img class="card-img-top"  src='https://image.tmdb.org/t/p/original{{m.poster_path}}' alt="kkk"></a>
+                  <a routerLink='/movie/{{m.id}}'>
+                     <img class="card-img-top"  src='https://image.tmdb.org/t/p/original{{m.poster_path}}' alt="kkk">
+                  </a>
                 <div class="card-body" >
                   <h6 id= "card-title">{{m.title}}</h6>     
                   <p class= "card-text" >Rating: {{m.vote_average}}</p>
@@ -51,10 +53,6 @@
         <ng-template  #genreIncrementButton>
             <button class = "btn btn-danger" (click) = "increment()" routerLink="/{{movieType}}/{{genreId}}" [queryParams]="{ pageId:  +pageId+1  } " >&#9792;</button>        
         </ng-template>
-
-
-
-
       </div>
      </div>
     </div>

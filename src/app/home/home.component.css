@@ -4,10 +4,20 @@ tbody,
 tr, 
 th,
 td,
-span{
-      padding: 0px;
-      margin : 0px;
-  }
+span{   
+    padding: 0px;
+    margin : 0px;
+}
+tr{height: 50px;}
+th{
+    height:30px;
+    width:50px;
+    text-align: left;
+    font-size: 21px;
+    font-weight: bold;
+    color:rgb(218, 108, 18);
+}
+td {width: 50px;}
 span {
     color: white;
     text-shadow: 2px 2px 4px #000000;
@@ -18,16 +28,16 @@ span {
     position: absolute;
   }
  .bottom-right{
-    bottom: 50px;
-    right:38%;
+    bottom:5%;
+    right:30%;
 }
 .top-right-left{
-    bottom: 70%;
-    right:40%;
+    bottom:70%;
+    right:35%;
 }
 .top-right-right{
-    bottom: 70%;
-    right:5%;
+    bottom:70%;
+    right:6%;
 }
 .top-left{
     bottom: 40%;
@@ -35,30 +45,17 @@ span {
 }
 .bottom-left-left{
     bottom:5%;
-    left:5%;
+    left:6%;
 }
 .bottom-left-right{
     bottom:5%;
     left:30%;
 }
-tr {
-    height: 50px;
-}
-th{
-    height:30px;
-    width:50px;
-    text-align: left;
-    font-size: 21px;
-    font-weight: bold;
-    color:rgb(218, 108, 18);
-}
 .void{
     height: 0px !important;
 }
 
-td {
-    width: 50px;
-}
+
 .table-body {
     margin-top : 50px;
 } 
