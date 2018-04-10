@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-3">
-      <img class="img-fluid poster" src="https://image.tmdb.org/t/p/w780{{movieDetail?.poster_path}}" alt="poster images">
+      <img class="img-fluid poster" src="{{base_url}}{{movieDetail?.poster_path}}" alt="poster images">
       <div class="img-overlay">
           <a href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" placement="right" ngbTooltip="Play Trailer" target="_blank"><i class="fa fa-play-circle fa-5x"></i> </a>
       </div>

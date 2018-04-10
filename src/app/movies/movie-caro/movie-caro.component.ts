@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { IMovie } from '../../shared/Movies';
 import { ResponseService } from '../../services/response.service';
+import { Subject } from 'rxjs/Subject';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'ngbd-carousel-config',
@@ -14,7 +16,9 @@ export class NgbdCarouselConfig implements OnInit {
   // @Input() moviesResult : IMovie[] = [];
   moviesResult : IMovie[] = [];
   topMovies : IMovie[] = [];
-  constructor(config: NgbCarouselConfig, private responseService : ResponseService) {
+  private ngUnsubscribe = new Subject<void>();
+  constructor(config: NgbCarouselConfig, 
+              private responseService : ResponseService) {
     // customize default values of carousels used by this component tree
    
     config.interval = 10000;
@@ -26,17 +30,11 @@ export class NgbdCarouselConfig implements OnInit {
   ngOnInit(){
     
     this.responseService.getPopularMovies(10)
+    .takeUntil(this.ngUnsubscribe)
     .subscribe(
       response =>
       this.moviesResult = response.results
     );
     // console.log(this.moviesResult);
   }
-  // getTopMovies() {
-  //       for(let i = 0; i <= 5; i++){
-  //         this.topMovies.push(this.moviesResult[i]);
-  //       }
-  //       return this.moviesResult;
-  // }
-  // getMovies(){
 }
