@@ -50,7 +50,7 @@ export class NavBarComponent implements AfterViewInit, OnInit {
     this.showDropDown = !this.showDropDown;
     // console.log(this.showDropDown);
   }
-  onClickedOutside(e: Event) {
+  onClickedOutside() {
     // console.log('Clicked outside:', e);
     this.showDropDown = false;
   }
