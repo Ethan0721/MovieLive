@@ -15,6 +15,7 @@ export class MovieDetailComponent implements OnInit {
   movieDetail : IMovie;
   movieId :  number;
   base_url:string = "https://image.tmdb.org/t/p/w780";
+  base_back_drops : string = "https://image.tmdb.org/t/p/original";
   moviePlay : any;
   movieCast : ICast[] =[];
   similarMovie:IMovie[]=[];

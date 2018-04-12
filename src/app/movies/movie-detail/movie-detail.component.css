@@ -1,6 +1,30 @@
-.container-fluid{
+/* .bg-img{
+    background-image: url(""); 
+} */
+.bg-img{
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    height: 750px;
     width: 100%;
-    padding:0px;
+    position: relative;
+    background-size: cover;
+    background-color: rgb(63, 60, 62);
+    background-blend-mode: overlay;
+}
+
+.movie-section{
+    /* background-color: black; */
+    /* color:white; */
+    position: absolute;
+    min-width: 870px;
+    min-height: 650px;
+    padding:10px; 
+    z-index: 1;
+    left:0;
+    right: 0;
+    top:0;
+    left:0;
     margin: 0px;
 }
 ::-webkit-scrollbar {
@@ -18,8 +42,16 @@ ul{
     margin:0px;
     padding: 0px;
 }
-strong{
-    font-size: 1.2rem;
+li h5{
+    display: inline-block;
+}
+.genre-id {
+    display: inline-block;
+}
+.text-content{
+    z-index: 1;
+    color: white;
+
 }
  #sub_title{
     font-size: 0.7em;
@@ -52,13 +84,7 @@ div.card-deck{
     min-width: 200px;
     min-height:200px;
 }
-.movie-section{
-    background-color: black;
-    color:white;
-    min-width: 870px;
-    min-height: 450px;
-    padding:10px; 
-}
+
 .section-header{
     margin:15px;
 }

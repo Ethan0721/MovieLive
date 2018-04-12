@@ -1,4 +1,8 @@
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="bg-img" [style.backgroundImage]="'url('+ base_back_drops+movieDetail?.backdrop_path +')'"></div>
+
 <div class="container-fluid">
   <div class="movie-section">
     <a name ="page-top"></a>
@@ -12,7 +16,7 @@
       </div>
     </div>
     <div class="col-md-1 col-sm-0"></div>
-    <div class="col-md-6 col-sm-12">
+    <div class="text-content col-md-6 col-sm-12">
       <!-- <div class="image-wrapper">
         <img class="img-fluid" src='https://image.tmdb.org/t/p/original{{movieDetail?.backdrop_path}}' alt="poster images"> 
         <div class="img-overlay">
@@ -20,26 +24,33 @@
         </div>
       </div>
       <hr> -->
-      <h3 id= "movie-title">{{movieDetail?.original_title}}</h3>
+      <h3 id= "movie-title">{{movieDetail?.original_title}}</h3>  
+      
+      <div class="genre-type">      
+        <h5 class="genre-id" *ngFor="let md of movieDetail?.genres">  
+          <span class="badge badge-pill badge-info">{{md.name}}</span> &nbsp;
+        </h5>
+      </div>
       <br>
+
       <div id = "movieDetails">
         <ul>
-          <li><strong>Overview :</strong><br>{{movieDetail?.overview}}</li>
-          <strong>Movie Type :</strong> <li class = "movieType" *ngFor="let md of movieDetail?.genres" >{{md?.name}}/&nbsp;</li>
-          <li> <strong>Relase Year :</strong> {{movieDetail?.release_date}}</li>
-          <li> <strong>Run time :</strong> {{movieDetail?.runtime}} mins</li>
-          <li> <strong>Revenue :</strong> {{movieDetail?.revenue}} </li> 
-          <li> <strong>Rating :</strong> {{movieDetail?.vote_average}} </li>
-          <li> <strong>Vote Count :</strong>  {{movieDetail?.vote_count}} </li>
+          <li><h5>Overview </h5></li><p>{{movieDetail?.overview}}</p>
+          <!-- <h5>Movie Type :</h5> <li class = "movieType" *ngFor="let md of movieDetail?.genres" >{{md?.name}}/&nbsp;</li> -->
+          <li> <h5>Release Year :</h5> {{movieDetail?.release_date}}</li>
+          <li> <h5>Run time :</h5> {{movieDetail?.runtime}} mins</li>
+          <li> <h5>Revenue :</h5> {{movieDetail?.revenue}} </li> 
+          <li> <h5>Rating :</h5> {{movieDetail?.vote_average}} </li>
+          <li> <h5>Vote Count :</h5>  {{movieDetail?.vote_count}} </li>
         </ul>
         <div> 
-          <strong>Home Page:</strong> <a href="{{movieDetail?.homepage}}">{{movieDetail?.homepage}}</a> 
+          <h5>Home Page</h5> <a href="{{movieDetail?.homepage}}">{{movieDetail?.homepage}}</a> 
         </div>
       </div>
     </div>
     <div class="col-md-1"></div>
   </div>
-  <hr>
+</div>
 </div>
 <div class="cast-section">
     <h4 class="col-md-12 section-header">Top Billed Cast</h4>
@@ -61,75 +72,4 @@
       <div class="right-side-bar col-md-2"></div>
   </div>
 </div>
-<!-- <div class="similar-section">
-  <h4 class="section-header">Similar Movies</h4>
-  <div id="wrapper">
-      <div class="table">
-          <div class="tr" >
-              <div class="td">
-                  <div class="box"></div>
-              <div class="td">
-                  <div class="box"></div> 
-              </div> 
-              <div class="td">
-                  <div class="box"></div> 
-              </div> 
-              <div class="td">
-                  <div class="box"></div> 
-              </div> 
-              <div class="td">
-                  <div class="box"></div> 
-              </div> 
-          </div>
-      </div>
-  </div> 
-</div> -->
 
-  <!-- <div id="wrapper">
-      <div class="img-table">
-          <div class="img-tr"  *ngFor="let k of similarMovie;let i=index">
-              <div class="img-td" *ngIf="i<5" >
-                  <div class="img-box">ghjk</div> 
-              </div> 
-          </div>
-      </div>
-  </div>  -->
-  <!-- <div class="row"> -->
-    <!-- <div class="image-container">
-    <ng-container class="image-gallery" *ngFor="let k of similarMovie;let i=index">
-        <div class="card-deck " style="width: 20rem;"  *ngIf="i<10">
-          <div class="card img-card">
-            <img class="card-img-top img-fluid" src="https://image.tmdb.org/t/p/original{{k.backdrop_path}}" alt="">
-          </div>
-        </div> -->
-        <!-- </div> -->
-        <!-- <ng-container  *ngFor="let c of movieCast; let i=index"> -->
-            <!-- <div class="card-deck" style="width: 11rem;" *ngIf="i<5" > -->
-              <!-- <div class="card"> -->
-                  <!-- <img class="card-img-top" src="http://image.tmdb.org/t/p/w185/{{c.profile_path}}" alt="Card image cap">
-                <div class="card-body" >
-                  <h5 class= "card-title card-name"><strong>{{c.name}}</strong></h5>  
-                  <h6 class= "card-title card-charachter">{{c.character}}</h6>    
-                </div>
-              </div>   -->
-      <!-- </ng-container>   
-    </div> -->
-        <!-- </div> -->
-
-<!-- </div> -->
-
-  <!-- Related Projects Row -->
-  <!-- <h3 class="my-4">Related Projects</h3> -->  
-  <!-- <div class="row">
-    <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
-        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-      </a>
-    </div>
-    <div class="col-md-3 col-sm-6 mb-4">
-      <a href="#">
-        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-      </a>
-    </div>
-  </div> -->
-</div>
