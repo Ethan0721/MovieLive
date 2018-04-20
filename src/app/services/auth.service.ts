@@ -9,6 +9,7 @@ import { AppError } from './../shared/app.error';
 import {Router} from "@angular/router";
 import { RequestOptions, Request, RequestMethod, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'
+import { User } from '../shared/user.model';
 @Injectable()
 export class AuthService {
   AccessToken : string = "";
@@ -16,10 +17,11 @@ export class AuthService {
   }
 
   // private TokenApi = 'https://api.themoviedb.org/3/authentication/token/new?api_key=e7ec5de68c5c7f163beab4e361e6245d';
-    private signupUrl = 'http://localhost:59854/api/account/register';
-    private signinUrl = 'http://localhost:59854/token';
+    private signupUrl = 'http://localhost:50083';
+    private signinUrl = 'http://localhost:50083/token';
+    
+    
     login(username : string, password : string) : Observable <ITokenResponse>{
-  
     var headersForTokenApi = new HttpHeaders({'Content-type' : 'application/x-www-form-urlencoded'});
     var data = 'grant_type=password&username=' + username + "&password=" + password;
 
@@ -28,14 +30,26 @@ export class AuthService {
     .catch(this.handleError);
   }
 
-  signUp(username : string, password : string, confirmpassword : string ) : Observable <ISignUpResponse>{
-    var headersForTokenApi = new HttpHeaders({'Content-type' : 'application/x-www-form-urlencoded'});
-    var data = 'email=' + username + "&password=" + password + '&confirmPassword=' + confirmpassword;
-    
-    return this.http.post(this.signupUrl,data, { headers : headersForTokenApi } )
-    .map(resp => resp as ISignUpResponse)
-    .catch(this.handleError);
+  registerUser(user : User){
+    console.log("user :"+user.Email);
+    const body : User = {
+      UserName : user.UserName,
+      Password : user.Password,
+      Email: user.Email,
+      FirstName : user.FirstName,
+      LastName : user.LastName
+    }
+    return this.http.post(this.signupUrl +"/api/User/Register", body);
   }
+  // signUp(user : IUser ) : Observable <ISignUpResponse>{
+  //   var headersForTokenApi = new HttpHeaders({'Content-type' : 'application/x-www-form-urlencoded'});
+    
+  //   var data = 'email=' + user.email + "&password=" + user.password + '&confirmPassword=' + user.confirmpassword;
+    
+  //   return this.http.post(this.signupUrl,data, { headers : headersForTokenApi } )
+  //   .map(resp => resp as ISignUpResponse)
+  //   .catch(this.handleError);
+  // }
 
 private handleError(error: Response) {
     

@@ -5,17 +5,14 @@
     background-position: center;
     background-repeat: no-repeat;
     z-index: -1;
-    height: 750px;
+    height: 680px;
     width: 100%;
     position: relative;
     background-size: cover;
-    background-color: rgb(63, 60, 62);
+    background-color: rgb(46, 43, 45);
     background-blend-mode: overlay;
 }
-
 .movie-section{
-    /* background-color: black; */
-    /* color:white; */
     position: absolute;
     min-width: 870px;
     min-height: 650px;

@@ -10,10 +10,8 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
   templateUrl: 'movie-caro.component.html',
   styleUrls: ['./movie-caro.component.css'],
   providers: [NgbCarouselConfig] // add NgbCarouselConfig to the component providers
-  
 })
-export class NgbdCarouselConfig implements OnInit {
-  // @Input() moviesResult : IMovie[] = [];
+export class caroComponent implements OnInit {
   moviesResult : IMovie[] = [];
   topMovies : IMovie[] = [];
   private ngUnsubscribe = new Subject<void>();

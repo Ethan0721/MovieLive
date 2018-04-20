@@ -18,7 +18,7 @@ export class GenreService {
    
   
     getGenreList(): Observable <IMovieGenre>{
-        return this._http.get(this.genre_list)
+        return this._http.get(this.genre_list).retry(3)
         .map(resp => resp as IMovieGenre)
         .catch(this.handleError);  
     }

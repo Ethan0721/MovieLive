@@ -16,7 +16,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './shared/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdCarouselConfig} from './movies/movie-caro/movie-caro.component';
+import { caroComponent} from './movies/movie-caro/movie-caro.component';
 import { NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { NgProgressModule} from 'ngx-progressbar';
 
@@ -46,13 +46,13 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
     MovieFilterComponent,
     NotFoundComponent,
     
-    NgbdCarouselConfig,
     MovieBodyComponent,
     LoginComponent,
     MovieDetailComponent,
     SignupComponent,
     MoviePopularPipe,
     ReleaseYearFilterPipe,
+    caroComponent,
     // GenreComponent,
     ],
   imports: [
@@ -81,7 +81,7 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
     ])
   ],
   providers: [
-    NgbdCarouselConfig,
+    // NgbdCarouselConfig,
     FilterService,
     // MoviesService,
     ResponseService,

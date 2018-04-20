@@ -1,58 +1,87 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="container">
-  <form class="form-signin" #f="ngForm" (ngSubmit)="addUser(f)">
-    <h2 class="form-signin-heading">Please sign Up</h2>
+  <form class="form-signin" #f="ngForm" (ngSubmit)="OnSubmit(f)">
+    <h2 class="form-signin-heading">Please Sign Up</h2>
     <div class="form-group">
       <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" name="username"  
+      <input type="email" name="Email"  
              #emailUser="ngModel"
              class="inputEmail form-control"
-             pattern=".+\@.+\..+" 
+             [(ngModel)] = "user.Email"
              placeholder="Email address"  
              required autofocus="" ngModel >
     </div>
-    <div *ngIf="emailUser?.touched" >
-      <div [hidden]="!emailUser?.hasError('required')" class="alert alert-danger">
-          Email is required format should be john@doe.com. 
-      </div> 
-      <div [hidden]="!emailUser?.hasError('pattern')" class="alert alert-danger">
-          Invalid Email format!
-      </div>
-    </div> 
+    <!-- <div *ngIf="emailUser?.touched" >
+        <div [hidden]="!emailUser?.hasError('required')" class="alert alert-danger">
+            Email is required format should be john@doe.com. 
+        </div> 
+        <div [hidden]="!emailUser?.hasError('pattern')" class="alert alert-danger">
+            Invalid Email format!
+        </div>
+      </div>  -->
+    <div class="form-group">
+        <label for="firstName" class="sr-only">First Name</label>
+        <input type="text" name="FirstName"  
+               #firstName="ngModel"
+               class="form-control"
+               [(ngModel)] ="user.FirstName"
+               placeholder="First Name"  
+               required autofocus="" ngModel >
+    </div>
+    <div class="form-group">
+        <label for="lastName" class="sr-only">Last Name</label>
+        <input type="text" name="LastName"  
+               #firstName="ngModel"
+               [(ngModel)] ="user.LastName"
+               class="form-control"
+               placeholder="Last Name"  
+               required autofocus="" ngModel >
+    </div>
+    <div class="form-group">
+            <label for="username" class="sr-only">User Name</label>
+            <input type="text" name="UserName"  
+                   #firstName="ngModel"
+                   [(ngModel)] ="user.UserName"
+                   class="form-control"
+                   placeholder="UserName"  
+                   required autofocus="" ngModel >
+        </div>
+
+
     <div class="form-group">
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" name= "password" 
+      <input type="password" name= "Password" 
              #passwordUser="ngModel"
              class="inputPassword form-control" 
-             pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,15}$" 
+             [(ngModel)] ="user.Password"
              placeholder="Password" ngModel required >
     </div>
-    <div *ngIf="passwordUser?.touched" >
+    <!-- <div *ngIf="passwordUser?.touched" >
         <div [hidden]="!passwordUser?.hasError('required')" class="alert alert-danger">
             Password is required.
         </div> 
         <div [hidden]="!passwordUser?.hasError('pattern')" class="alert alert-danger">
             Must contain Uppercase,Number,Character, minimum 6 characters!
         </div>
-    </div> 
-    <div class="form-group">
+    </div>  -->
+    <!-- <div class="form-group">
       <label for="confirmedPassword" class="sr-only">Confirmed Password</label>
       <input type="password" 
              #confirmpasswordUser="ngModel" 
              name="confirmpassword" class="inputPassword form-control" 
              placeholder="Confirm Password"  required ngModel > 
-    </div>
-    <div *ngIf="confirmpasswordUser?.touched" >
+    </div> -->
+    <!-- <div *ngIf="confirmpasswordUser?.touched" >
         <div [hidden]="!confirmpasswordUser.hasError('pattern')" class="alert alert-danger">
             Confirmed password is required. 
         </div> 
-    </div> 
-    <div class="checkbox">
+    </div>  -->
+    <!-- <div class="checkbox">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
       </label>
-    </div>
+    </div> -->
     <button  class="btn btn-lg btn-primary btn-block" [disabled]="f.invalid"  type="submit">Sign Up </button>
     <br>
     <div class= "errorMessage">
@@ -60,8 +89,7 @@
     </div>
   </form>
 </div>
-
- <!-- {{f.value | json}} -->
+ {{f.value | json}} 
 
 
 
