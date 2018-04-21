@@ -48,7 +48,7 @@ export class NavBarComponent implements AfterViewInit, OnInit {
               public el: ElementRef ) { 
   }
   ngOnInit(){
-    this.logo_path="../../assets/images/movie.png";
+    this.logo_path="./assets/images/movie.png";
     this.getPopularMovies();
   }
   ngAfterViewInit(){
