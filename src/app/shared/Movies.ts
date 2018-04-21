@@ -15,5 +15,4 @@ export interface IMovie {
     backdrop_path : string;
     vote_count:number;
     runtime : string;
-    genres : IGenre[];
 }

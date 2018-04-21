@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { caroComponent} from './movies/movie-caro/movie-caro.component';
 import { NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { NgProgressModule} from 'ngx-progressbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { RouterModule } from "@angular/router";
@@ -64,6 +65,7 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
     AngularFontAwesomeModule,
     NgProgressModule,
     ClickOutsideModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([  
       { path: '', component : HomeComponent},
       { path:'popular', component : MovieBodyComponent },

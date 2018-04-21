@@ -5,11 +5,23 @@ import { ResponseService } from '../../services/response.service';
 import { ICast } from '../../shared/Cast';
 import 'rxjs/add/operator/take';
 import { Subject } from 'rxjs/Subject';
+import { trigger,state,style,transition,animate,keyframes } from '@angular/animations';
 import { takeUntil } from 'rxjs/operators'; // for rxjs ^5.5.0 lettable operators
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
+  styleUrls: ['./movie-detail.component.css'],
+  animations: [
+    // trigger('cast-card-animation', [
+    //   state('small', style({
+    //     transform: 'scale(1)',
+    // })),
+    //  state('large', style({
+    //     transform: 'scale(1.2)',
+    // })),
+    // transition('small => large', animate('100ms ease-in')),
+    // ]),
+  ]
 })
 export class MovieDetailComponent implements OnInit {
   movieDetail : IMovie;
