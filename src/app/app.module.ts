@@ -1,12 +1,14 @@
+import { AuthGuard } from './auth/auth.guard';
 import { AppComponent } from './app.component';
 import { AuthService} from './services/auth.service';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { ClickOutsideModule } from 'ng4-click-outside';
+import { caroComponent} from './movies/movie-caro/movie-caro.component';
 
 import { MoviesComponent } from './movies/movies.component';
-// import { MoviesService } from './services/movies.service';
 import { MovieFilterComponent } from './movies/movie-filter/movie-filter.component';
 import { MovieBodyComponent } from './movies/movie-body/movie-body.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
@@ -16,28 +18,25 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './shared/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { caroComponent} from './movies/movie-caro/movie-caro.component';
 import { NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { NgProgressModule} from 'ngx-progressbar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter.pipe';
 import { RouterModule } from "@angular/router";
-
 import { ResponseService } from './services/response.service';
 import { GenreService } from './services/genre.service';
 
 import { FormsModule } from '@angular/forms';
 import { FilterService } from './services/filter.service';
-
+import { FooterComponent } from './footer/footer.component';
 
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter.pipe';
+import { SignupComponent } from './user/signup/signup.component';
 
+import { LoginComponent } from './user/login/login.component';
+import { UserComponent } from './user/user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +53,8 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
     MoviePopularPipe,
     ReleaseYearFilterPipe,
     caroComponent,
-    // GenreComponent,
+    FooterComponent,
+    UserComponent,
     ],
   imports: [
     BrowserModule,
@@ -68,7 +68,8 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
     BrowserAnimationsModule,
     RouterModule.forRoot([  
       { path: '', component : HomeComponent},
-      { path:'popular', component : MovieBodyComponent },
+      
+      { path:'popular', component : MovieBodyComponent,canActivate:[AuthGuard] },
       { path:'top', component : MovieBodyComponent },
       { path:'nowplaying', component : MovieBodyComponent },
       { path:'upcomming', component : MovieBodyComponent },
@@ -77,7 +78,9 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
       { path: 'login', component: LoginComponent, data : {title : "Log In "}},
       { path : 'signup', component : SignupComponent, data : {title : "Sign Up "}}, 
       
-      { path : 'movie/:id', component : MovieDetailComponent},
+      { path : 'movie/:id', component : MovieDetailComponent,canActivate:[AuthGuard] },
+      
+      { path : 'user/:username', component : UserComponent},
       { path: '**', component: NotFoundComponent }
 
     ])
@@ -88,7 +91,8 @@ import { ReleaseYearFilterPipe } from './movies/movie-detail/release-year-filter
     // MoviesService,
     ResponseService,
     AuthService,
-    GenreService 
+    GenreService,
+    AuthGuard 
   ],
   bootstrap: [AppComponent]
 })

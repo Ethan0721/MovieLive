@@ -5,6 +5,7 @@ import { NgProgress, NgProgressInterceptor  } from 'ngx-progressbar';
 import { HttpClient , HTTP_INTERCEPTORS }  from '@angular/common/http';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Route } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,23 +14,26 @@ import { ActivatedRoute, Route } from '@angular/router';
   providers: [NgbCarouselConfig],
 })
 export class HomeComponent implements OnInit{
-
   post : any;
   url : string;
   topMovies: IMovie[];
   image_url = "http://image.tmdb.org/t/p/original/";
   theaterMovies: IMovie[]=[];
+  isLogin:any;
   JapanMovie : {id:number,backdrop_path:string,title:string}[];
   constructor(
               // progressService: NgProgress, 
               config: NgbCarouselConfig, 
               private _activeRoute: ActivatedRoute,
-              private responseService: ResponseService  
-            ){
+              private responseService: ResponseService,
+              private router : Router  
+            )
+    {
       config.interval = 10000;
       config.wrap = true;
       config.keyboard = false;
-          }
+      this.isLogin=localStorage.getItem('userToken');
+    }
   
   ngOnInit(){       
     this.JapanMovie = [
@@ -51,4 +55,5 @@ export class HomeComponent implements OnInit{
     //     }
     //   );
   }
+
 }

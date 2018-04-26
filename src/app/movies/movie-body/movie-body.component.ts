@@ -1,20 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IMovie } from '../../shared/Movies';
-// import { MoviesService } from '../../services/movies.service';
-import { IuserResponse} from '../../shared/userResponse';
+import { IuserResponse } from '../../shared/userResponse';
 import { ResponseService } from '../../services/response.service';
-import {GenreService} from '../../services/genre.service';
+import { GenreService } from '../../services/genre.service';
 import { ActivatedRoute, Route } from '@angular/router';
-import { NgxPaginationModule} from  'ngx-pagination';
-import { createWiresService } from 'selenium-webdriver/firefox';
-import { Router } from '@angular/router';
 import { Response } from '@angular/http/src/static_response';
 import { IGenre } from '../../shared/Genre';
-import { Subscription } from 'rxjs/Subscription';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Subject } from 'rxjs/Subject';
 import { takeUntil } from 'rxjs/operators'; // for rxjs ^5.5.0 lettable operators
-import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-movie-body',
@@ -32,7 +26,6 @@ export class MovieBodyComponent implements OnInit, OnDestroy {
   
   constructor(private _activeRoute: ActivatedRoute, 
               private responseService: ResponseService,
-              // private router : Router,
               private genreService : GenreService 
               )
           { 
@@ -53,18 +46,21 @@ export class MovieBodyComponent implements OnInit, OnDestroy {
       this.route_pargeId =this.pageId;
     })
     this.pageId = this.route_pargeId;
-    if(this.movieType==='popular'){
-      this.getPopularMovies(+this.pageId); 
-    }
-    else if (this.movieType ==="top"){
-      this.getTopRatedMovies(+this.pageId);
-    }
-    else if (this.movieType ==="nowplaying"){
-      this.getMoviePlaying(+this.pageId);
-    }else if (this.movieType ==="upcomming"){
-      this.getUpcommingMovies(+this.pageId);
-    }
-    else if (this.movieType ==="genre"){
+    this.checking();
+  }
+checking(){
+  if(this.movieType==='popular'){
+    this.getPopularMovies(+this.pageId);
+  }
+  else if(this.movieType==='top'){
+    this.getTopRatedMovies(+this.pageId);
+  }
+  else if (this.movieType==='nowplaying'){
+    this.getMoviePlaying(+this.pageId);
+  }
+  else if(this.movieType==="upcomming"){
+    this.getUpcommingMovies(+this.pageId);
+  }else if (this.movieType ==="genre"){
     this._activeRoute.params
     .subscribe( params => {
       if(params.id > 0){
@@ -73,15 +69,17 @@ export class MovieBodyComponent implements OnInit, OnDestroy {
         this.getGenreMovies(+this.genreId,+this.pageId);
       }
     });
-    }
+  }else{
+    console.log("Wrong route");
   }
+}
    increment(){
     this.pageId++;
-    this.getPopularMovies(+this.pageId);
+    this.checking();
    }
    decrement(){
     this.pageId--;
-    this.getPopularMovies(+this.pageId);
+    this.checking();
    }
    
    getPopularMovies(id : number ){

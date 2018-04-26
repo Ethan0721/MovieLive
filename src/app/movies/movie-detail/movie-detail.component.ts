@@ -26,15 +26,17 @@ import { takeUntil } from 'rxjs/operators'; // for rxjs ^5.5.0 lettable operator
 export class MovieDetailComponent implements OnInit {
   movieDetail : IMovie;
   movieId :  number;
-  base_url:string = "https://image.tmdb.org/t/p/w780";
+  base_url:string = "https://image.tmdb.org/t/p/w780/";
   base_back_drops : string = "https://image.tmdb.org/t/p/original";
   moviePlay : any;
   movieCast : ICast[] =[];
   similarMovie:IMovie[]=[];
+  logo_path:string;
   private ngUnsubscribe = new Subject<void>();
   
   constructor(private _route: ActivatedRoute, private responseService: ResponseService) {}
   ngOnInit() {
+    this.logo_path="../../assets/images/movie.png";
     this.movieId = this._route.snapshot.params['id'];
     
     this.responseService.getMovieById(this.movieId)

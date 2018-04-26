@@ -1,11 +1,12 @@
 
 import { Injectable, Component } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { ISignUpResponse } from '../shared/interfaces';
+import { AuthService } from '../../services/auth.service';
+import { ISignUpResponse } from '../../shared/interfaces';
 import { Router } from '@angular/router';
-import { User} from '../shared/user.model'; 
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { User } from '../../shared/user.model';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,18 +19,11 @@ export class SignupComponent implements OnInit{
   message : string;
   user : User;
   errorMessage  = "";
-  constructor(private authService : AuthService, private router : Router) { 
+  constructor(private authService : AuthService, private _router : Router) { 
   }
   ngOnInit(){
     this.resetForm();
   }
-  // DoSignUp(){
-  //   this.authService.signUp(this.userList,this.password,this.confirmpassword )
-  //   .subscribe(
-  //     data =>
-  //      
-  //   );
-  // }
   resetForm(form?: NgForm){
     if(form != null) 
       form.reset();
@@ -38,22 +32,17 @@ export class SignupComponent implements OnInit{
       Password: "",
       Email: "",
       FirstName: "",
-      LastName: ""
-    }
+      LastName: "",
+      Points:10
+    };
   }
   OnSubmit(form: NgForm){
-
     console.log(form.value);
     this.authService.registerUser(form.value)
     .subscribe(
-      (data:any) =>{
-        this.resetForm(form);   
-      //  error=>this.errorMessage=error;
-      //  ()=>this.router.navigate(['/login'])
-    }
-    
-      // error => this.errorMessage=error,
-      // () => this.router.navigate(['/login'])
+      (data:any) =>this.resetForm(form),
+      error=> console.log("Error",error),
+      ()=> this._router.navigate(['/login'])
     );
   }
 }

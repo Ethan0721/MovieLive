@@ -1,7 +1,9 @@
 
-<nav class=" navbar navbar-expand-lg navbar-light bg-light">
+<nav class=" navbar navbar-expand-lg" >
   <div class="navbar-brand"  [@scrollAnimation]="pos" href="#" > 
-    <img id="logo" onclick="topFunction()" [src]=logo_path alt="movie">
+    <img id="logo" 
+    [src]=logo_path alt="movie log">
+    <!-- onclick="topFunction()"  -->
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -43,18 +45,45 @@
             </ul>
           </div>
         </div> 
-        </div>      
+        </div>
+    
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item" routerLinkActive='active'>
+            <li *ngIf="isLogin" class="row">
+                <div class="col">
+                  <div ngbDropdown class="d-inline-block">
+                    <button class="btn btn-outline-primary user-profile" id="dropdownBasic1" ngbDropdownToggle>User</button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button class="dropdown-item">Points</button>
+                      <button class="dropdown-item" routerLink='/user/{{userClaims?.UserName}}'>Profile</button>
+                      <button class="dropdown-item">Movie List</button>
+                      <button class="dropdown-item" (click)="Logout()">Logout</button>
+                    </div>
+                  </div>
+              </div>
+            </li>   
+          <li *ngIf="!isLogin" class="nav-item" routerLinkActive='active'>
             <a class="nav-link" routerLink='/login' href="#">Login</a>
           </li>
+          <!-- <li *ngIf="isLogin" class="nav-item" >
+              <a class="nav-link" (click)="Logout()">Logout</a>
+          </li> -->
           <li class="nav-item" routerLinkActive='active'>
             <a class="nav-link" routerLink='/signup' href="#">SignUp</a>
           </li>
+
+
+         
         </ul>
+
           <!-- <div>
           <span *ngIf="searching">searching...</span>
           <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
         </div> -->
   </div>
 </nav>
+<!-- {{isLogin}} -->
+<!-- <div *ngIf="userClaims">
+  <span>Username:{{userClaims?.UserName}}</span>
+  <span>Eamil:{{userClaims?.Email}}</span>
+  <span>Eamil:{{userClaims?.Points}}</span>
+</div> -->

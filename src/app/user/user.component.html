@@ -1,0 +1,39 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-2">
+      <img id="user-img" class="img-fluid" src="../../assets/images/user.jpg">
+      <div class="user-info" *ngIf="userClaims">
+        <h5>Personal Info</h5>
+      <span>
+        <h6>Username</h6>
+        {{userClaims?.UserName}}
+      </span>
+
+      <span>
+        <h6>Full name</h6>
+        {{userClaims?.FirstName}} {{userClaims.LastName}}
+      </span>
+        
+      <span>
+        <h6>Eamil</h6> 
+        {{userClaims?.Email}}
+      </span>
+        
+      <span>
+        <h6>Points</h6>
+        {{userClaims?.Points}}
+      </span>
+      
+    </div>      
+    
+  </div>
+    
+  <div class="col-md-5">hjk</div>
+    
+  <div class="col-md-3">poiu</div>
+  
+</div>
+</div>
+

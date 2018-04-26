@@ -1,22 +1,25 @@
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<div class="sticky-top">
+<img id="logo" 
+[src]=logo_path alt="movie" routerLink='/'>
+<!-- onclick="topFunction()"  -->
+</div>
 <div class="bg-img" [style.backgroundImage]="'url('+ base_back_drops+movieDetail?.backdrop_path +')'"></div>
 
 <div class="container-fluid">
   <div class="movie-section">
-    <a name ="page-top"></a>
-    <h1 class="my-4 movieTitle" >{{movieDetail?.title}}  <span id="sub_title">{{movieDetail?.release_date | date:'yyyy'}} </span></h1> 
+    <!-- <a name ="page-top"></a> -->
+    <!-- <h1 class="my-4 movieTitle" >{{movieDetail?.title}}  <span id="sub_title">{{movieDetail?.release_date | date:'yyyy'}} </span></h1>  -->
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-3">
-      <img class="img-fluid poster" src="{{base_url}}{{movieDetail?.poster_path}}" alt="poster images">
+    <div class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-2" ></div>
+    <div class="img-content col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
+      <img id="poster" class="img-fluid" src="{{base_url}}{{movieDetail?.poster_path}}" alt="poster images">
       <div class="img-overlay">
           <a href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" placement="right" ngbTooltip="Play Trailer" target="_blank"><i class="fa fa-play-circle fa-5x"></i> </a>
       </div>
     </div>
-    <div class="col-md-1 col-sm-0"></div>
-    <div class="text-content col-md-6 col-sm-12">
+    <div class="text-content col-12 col-sm-4 col-md-4 col-lg-4 col-xl-5">
       <!-- <div class="image-wrapper">
         <img class="img-fluid" src='https://image.tmdb.org/t/p/original{{movieDetail?.backdrop_path}}' alt="poster images"> 
         <div class="img-overlay">
@@ -24,18 +27,20 @@
         </div>
       </div>
       <hr> -->
-      <h3 id= "movie-title">{{movieDetail?.original_title}}</h3>  
-      
+      <h3 id= "movie-title">
+        {{movieDetail?.title}}
+        <span id="sub_title">({{movieDetail?.release_date | date:'yyyy'}})</span>
+      </h3>  
       <div class="genre-type">      
-        <h5 class="genre-id" *ngFor="let md of movieDetail?.geners">  
+        <h5 class="genre-id" *ngFor="let md of movieDetail?.genres">  
           <span class="badge badge-pill badge-info">{{md.name}}</span> &nbsp;
         </h5>
       </div>
       <br>
-
       <div id = "movieDetails">
         <ul>
-          <li><h5>Overview </h5></li><p>{{movieDetail?.overview}}</p>
+          <li><h5>Overview  </h5> <p>{{movieDetail?.overview}} </p></li>
+          <li><h5>Original Title : </h5> {{movieDetail?.original_title}}</li>
           <!-- <h5>Movie Type :</h5> <li class = "movieType" *ngFor="let md of movieDetail?.genres" >{{md?.name}}/&nbsp;</li> -->
           <li> <h5>Release Year :</h5> {{movieDetail?.release_date}}</li>
           <li> <h5>Run time :</h5> {{movieDetail?.runtime}} mins</li>
@@ -48,7 +53,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-0 col-sm-2 col-md-2 col-lg-2 col-xl-2"></div>
   </div>
 </div>
 </div>
@@ -60,10 +65,10 @@
       <ng-container  *ngFor="let c of movieCast; let i=index">
         <div class="card-deck" *ngIf="i<5 && [c.profile_path] !='' " >
           <div class="card">
-            <img class="card-img-top" src="http://image.tmdb.org/t/p/w185/{{c.profile_path}}" alt="Card image cap">
+            <img class="card-img-top" src="http://image.tmdb.org/t/p/w185/{{c?.profile_path}}" alt="Card image cap">
             <div class="card-body" >
-              <h6 class= "card-title card-name"><strong>{{c.name}}</strong></h6>  
-              <h6 class= "card-title card-charachter">{{c.character}}</h6>    
+              <h6 class= "card-title card-name"><strong>{{c?.name}}</strong></h6>  
+              <h6 class= "card-title card-charachter">{{c?.character}}</h6>    
           </div>  
         </div>
       </div>

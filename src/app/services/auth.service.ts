@@ -6,28 +6,31 @@ import { Observable } from 'rxjs/Rx';
 import { NotFoundError } from './../shared/not.found.error';
 import { BadInputError } from './../shared/bad.input.error';
 import { AppError } from './../shared/app.error';
-import {Router} from "@angular/router";
+import { Router} from "@angular/router";
 import { RequestOptions, Request, RequestMethod, Headers } from '@angular/http';
-import 'rxjs/add/operator/map'
 import { User } from '../shared/user.model';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map'
+
 @Injectable()
 export class AuthService {
-  AccessToken : string = "";
+  // AccessToken : string = "";
   constructor(private http : HttpClient, private router: Router ) { 
   }
 
-  // private TokenApi = 'https://api.themoviedb.org/3/authentication/token/new?api_key=e7ec5de68c5c7f163beab4e361e6245d';
-    private signupUrl = 'http://localhost:50083';
-    private signinUrl = 'http://localhost:50083/token';
-    
-    
-    login(username : string, password : string) : Observable <ITokenResponse>{
-    var headersForTokenApi = new HttpHeaders({'Content-type' : 'application/x-www-form-urlencoded'});
-    var data = 'grant_type=password&username=' + username + "&password=" + password;
+  private rootUrl = 'http://localhost:50083';
 
-    return this.http.post<ITokenResponse>(this.signinUrl,data, { headers : headersForTokenApi } )
-    .map(resp => resp)
-    .catch(this.handleError);
+  // private checkLogin = new BehaviorSubject<boolean>(false);
+  // currentStatus = this.checkLogin.asObservable();  
+  
+  
+  loginUser(username : string, password : string) : Observable <ITokenResponse>{
+      var data = 'username=' + username + "&password=" + password+"&grant_type=password";
+      var headersForTokenApi = new HttpHeaders({'Content-type' : 'application/x-www-form-urlencoded'});
+      
+      return this.http.post<ITokenResponse>(this.rootUrl+"/token", data, { headers : headersForTokenApi } )
+      .map(resp => resp)
+      .catch(this.handleError);
   }
 
   registerUser(user : User){
@@ -37,22 +40,18 @@ export class AuthService {
       Password : user.Password,
       Email: user.Email,
       FirstName : user.FirstName,
-      LastName : user.LastName
-    }
-    return this.http.post(this.signupUrl +"/api/User/Register", body);
+      LastName : user.LastName,
+      Points:user.Points
+    };
+    return this.http.post(this.rootUrl +"/api/User/Register", body);
   }
-  // signUp(user : IUser ) : Observable <ISignUpResponse>{
-  //   var headersForTokenApi = new HttpHeaders({'Content-type' : 'application/x-www-form-urlencoded'});
-    
-  //   var data = 'email=' + user.email + "&password=" + user.password + '&confirmPassword=' + user.confirmpassword;
-    
-  //   return this.http.post(this.signupUrl,data, { headers : headersForTokenApi } )
-  //   .map(resp => resp as ISignUpResponse)
-  //   .catch(this.handleError);
-  // }
-
-private handleError(error: Response) {
-    
+  
+  getUserClaims() {
+   return this.http.get(this.rootUrl+"/api/GetUserClaims", 
+    { headers : new HttpHeaders({'Authorization' : 'Bearer ' + localStorage.getItem('userToken')})});
+  }
+  
+  private handleError(error: Response) {
     if (error.status === 400) {
       let errorMessage = "Email already be registered, plase change a different name";
       return Observable.throw(errorMessage);
@@ -62,8 +61,6 @@ private handleError(error: Response) {
       //  return Observable.throw(new NotFoundError());
       return Observable.throw(errorMessage);
       }
-
-    
     return Observable.throw(new AppError(error));
   }
 }

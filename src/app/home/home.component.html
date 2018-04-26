@@ -1,4 +1,5 @@
 <app-nav-bar></app-nav-bar>
+<!-- {{isLogin}} -->
 <div class="table-body">
   <div class="row">
     <div class="col-md-2"></div>
@@ -38,7 +39,7 @@
           <td colspan="4" rowspan="5"> 
             <a routerLink='/movie/{{theaterMovies[2]?.id}}'> 
               <img class="img-fluid" src = "{{image_url}}{{theaterMovies[2]?.backdrop_path}}">  
-              <span class ="bottom-right">{{theaterMovies[2]?.title}}</span>
+              <span style="display: table-cell;vertical-align: middle;" class ="bottom-right">{{theaterMovies[2]?.title}}</span>
             </a>
           </td>
         </tr>

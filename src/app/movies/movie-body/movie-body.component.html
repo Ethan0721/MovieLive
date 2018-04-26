@@ -25,11 +25,11 @@
             <div class="card-deck" *ngFor="let m of moviesResult">
               <div class="card">
                   <a routerLink='/movie/{{m.id}}' href="#">
-                     <img class="card-img-top"  src='https://image.tmdb.org/t/p/original{{m.poster_path}}' alt="kkk">
+                     <img class="card-img-top"  src='https://image.tmdb.org/t/p/original{{m?.poster_path}}' alt="kkk">
                   </a>
                 <div class="card-body" >
-                  <h6 id= "card-title">{{m.title}}</h6>     
-                  <p class= "card-text" >Rating: {{m.vote_average}}</p>
+                  <h6 id= "card-title">{{m?.title}}</h6>     
+                  <p class= "card-text" >Rating: {{m?.vote_average}}</p>
                 </div>
               </div>  
             </div>
@@ -43,11 +43,23 @@
       <div class="col-md-3" id = "page-text" >Currently on page: {{pageId}}  </div>
       <div class="col-md-7"></div>
       <div class="col-md-2">
-        <button class="btn btn-info" (click)= "decrement()" *ngIf="(pageId>1 &&  [movieType] != 'genre') ; else genreDecrementButton" routerLink="/{{movieType}}" [queryParams]="{ pageId: +pageId-1 }" >&#9794;</button> 
-        <button class = "btn btn-danger" (click) = "increment()"  *ngIf="[movieType] != 'genre' else genreIncrementButton" routerLink="/{{movieType}}" [queryParams]="{ pageId:  +pageId+1  } " >&#9792;</button>        
+        
+        <button class="btn btn-info" (click)= "decrement()" 
+          *ngIf="(pageId>1 &&  [movieType] != 'genre') ; else genreDecrementButton" 
+          routerLink="/{{movieType}}" [queryParams]="{ pageId: +pageId-1 }" >&#9794;
+        </button> 
+        <button class = "btn btn-danger" (click) = "increment()"  
+          *ngIf="[movieType] != 'genre' else genreIncrementButton" 
+          routerLink="/{{movieType}}"
+          [queryParams]="{ pageId:  +pageId+1  } " >&#9792;
+        </button>        
         
         <ng-template  #genreDecrementButton>
-            <button class="btn btn-info" (click)= "decrement()" *ngIf="(pageId>1)" routerLink="/{{movieType}}/{{genreId}}" [queryParams]="{ pageId: +pageId-1 }" >&#9794;</button> 
+            <button class="btn btn-info" (click)= "decrement()" 
+              *ngIf="(pageId>1)" 
+              routerLink="/{{movieType}}/{{genreId}}" 
+              [queryParams]="{ pageId: +pageId-1 }" >&#9794;
+            </button> 
         </ng-template>
 
         <ng-template  #genreIncrementButton>
@@ -57,5 +69,6 @@
      </div>
     </div>
 </div>
-<br>
+
+<app-footer></app-footer>
 

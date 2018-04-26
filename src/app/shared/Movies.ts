@@ -11,8 +11,9 @@ export interface IMovie {
     release_date : Date;
     revenue : string;
     homepage:string;
-    geners : IGenre[];
+    // geners : IGenre[];
     backdrop_path : string;
     vote_count:number;
     runtime : string;
+    genres:IGenre[];
 }

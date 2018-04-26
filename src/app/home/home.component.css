@@ -21,7 +21,7 @@ td {width: 50px;}
 span {
     color: white;
     text-shadow: 2px 2px 4px #000000;
-    font-size: 20px;
+    font-size: 2.6vh;
   }
   .bottom-right, .top-right-left, .top-right-right,.top-left,
   .bottom-left-left,.bottom-left-right{
@@ -33,7 +33,7 @@ span {
 }
 .top-right-left{
     bottom:70%;
-    right:35%;
+    right:30%;
 }
 .top-right-right{
     bottom:70%;

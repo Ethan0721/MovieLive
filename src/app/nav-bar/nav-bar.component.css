@@ -5,32 +5,22 @@
     background-color: white;
     z-index: 1;
 }
-.navbar-brand img{
-    width: 80px;
-    height:80px;
+/* #logo{
+    width: 70px;
+    height:70px;
     z-index: 1;
-
-}
-ul{
-    list-style-type: none;
-    margin:1px;
-}
+} */
+ul{margin:1px;}
 li{
     margin:0px;
     padding:0px;
 }
-/* #dropdown-container{
-    display: inline-block;
-}
-#dropdown-container button{
-    display: block;
-} */
 #dropdown-box{
     position:absolute;
     z-index:1;
     width:400px;
     max-height:300px;
-    top:80px;
+    top:55px;
     background-color:rgb(241, 239, 239);
     overflow-y:auto;
     font-size: 15px;
@@ -64,5 +54,10 @@ i, li {
 }
 .movie-type{
     text-align: center;
-
+}
+.user-profile{
+    border-radius: 50%;
+    display: block;
+    height: 60px;
+    width: 60px;
 }

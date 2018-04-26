@@ -9,7 +9,7 @@
     width: 100%;
     position: relative;
     background-size: cover;
-    background-color: rgb(46, 43, 45);
+    background-color: rgb(34, 32, 33);
     background-blend-mode: overlay;
 }
 .movie-section{
@@ -24,15 +24,19 @@
     left:0;
     margin: 0px;
 }
+#movie-title{
+    font-size: 32px;
+    font-weight: bold;
+}
 ::-webkit-scrollbar {
     width: 0px;
 }
-h1{
+/* h1{
     margin: 80px;
     color: red;
     font-weight: bold;
     font-size: 3rem;
-}
+} */
 ul{
     text-align: left;
     list-style-type: none;
@@ -42,16 +46,24 @@ ul{
 li h5{
     display: inline-block;
 }
+h5{
+    font-size: 18px;
+}
+
 .genre-id {
     display: inline-block;
 }
 .text-content{
     z-index: 1;
     color: white;
-
+    margin-top:50px;
+}
+.img-content{
+    margin-top:80px;
 }
  #sub_title{
-    font-size: 0.7em;
+    font-size: 21px;
+    opacity: 0.7;
 }
 .movieTitle{
     text-align:  center;
@@ -63,13 +75,9 @@ div.card-deck{
     padding: 0px;
     margin: 2px;
 }
-.movieType {
+/* .movieType {
     display: inline-block;
-}
-.poster{
-    min-width:213px;
-    min-height: 310px;
-}
+} */
 .img-overlay {
     position: absolute;
     left : 45%;
@@ -77,10 +85,10 @@ div.card-deck{
     opacity: .8;
     transform: translate(-45%, -45%);
 }
-.image-wrapper{
+/* .image-wrapper{
     min-width: 200px;
     min-height:200px;
-}
+} */
 
 .section-header{
     margin:15px;
@@ -105,11 +113,6 @@ div.card-body{
 .card-title{
     font-size: 15px;
 }
-
-#movie-title{
-    font-size: 30px;
-    font-weight: bold;
-}
 .cast-section{
     height:750px;
 }
@@ -117,6 +120,12 @@ div.card-body{
     height:230px;
     /* margin:0px; */
 }
+#logo{
+    position: absolute;
+    top:5px;
+    left:5px;
+}
+
 /* .table {
     display:table;
 }
