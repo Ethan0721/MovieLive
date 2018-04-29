@@ -37,6 +37,7 @@ import { SignupComponent } from './user/signup/signup.component';
 
 import { LoginComponent } from './user/login/login.component';
 import { UserComponent } from './user/user.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +67,23 @@ import { UserComponent } from './user/user.component';
     NgProgressModule,
     ClickOutsideModule,
     BrowserAnimationsModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 22,
+      outerStrokeWidth: 5,
+      innerStrokeWidth: 0,
+      maxPercent:100,
+      showSubtitle:false,
+      outerStrokeColor: "#78C000",
+      unitsColor:"white",
+      backgroundPadding: 10,
+      animationDuration: 500,
+      backgroundColor:"black",
+      titleColor:"white",
+      unitsFontSize:"8",
+      titleFontSize:"15"
+
+    }),
     RouterModule.forRoot([  
       { path: '', component : HomeComponent},
       
@@ -78,9 +96,9 @@ import { UserComponent } from './user/user.component';
       { path: 'login', component: LoginComponent, data : {title : "Log In "}},
       { path : 'signup', component : SignupComponent, data : {title : "Sign Up "}}, 
       
-      { path : 'movie/:id', component : MovieDetailComponent,canActivate:[AuthGuard] },
+      { path : 'movie/:id', component : MovieDetailComponent},
       
-      { path : 'user/:username', component : UserComponent},
+      { path : 'user/:username', component : UserComponent,canActivate:[AuthGuard]},
       { path: '**', component: NotFoundComponent }
 
     ])

@@ -21,15 +21,24 @@
       </div>
       <div class="col-md-10 section-body">
         <div class="row"><!-- pipe filter add in movieResult   | paginate: { itemsPerPage: 10, currentPage: p }" -->
-          <ng-container>
-            <div class="card-deck" *ngFor="let m of moviesResult">
-              <div class="card">
-                  <a routerLink='/movie/{{m.id}}' href="#">
-                     <img class="card-img-top"  src='https://image.tmdb.org/t/p/original{{m?.poster_path}}' alt="kkk">
+          <ng-container >
+            <div class="card-deck"  *ngFor="let m of moviesResult">
+              <div class="card border-0">
+                  <a  routerLink='/movie/{{m.id}}' href="#">
+                      <img class="card-img-top"  src='https://image.tmdb.org/t/p/original{{m?.poster_path}}' alt="kkk">
+                      <div class="card-bottom">
+                        <div class="textContent"></div>
+                        <p class="textInfo">Rating: {{m?.vote_average}}</p> 
+                        <ng-template #tipContent>
+                          <b>Popularity:</b><br> 
+                          {{m.popularity}}<br>
+                          <b>Released Date:</b><br>{{m?.release_date | date}} 
+                        </ng-template>
+                        <i class="fa fa-tags" aria-hidden="true" [ngbTooltip]="tipContent"  placement="top" ></i>
+                      </div>
                   </a>
                 <div class="card-body" >
                   <h6 id= "card-title">{{m?.title}}</h6>     
-                  <p class= "card-text" >Rating: {{m?.vote_average}}</p>
                 </div>
               </div>  
             </div>

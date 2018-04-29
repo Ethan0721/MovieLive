@@ -16,4 +16,5 @@ export interface IMovie {
     vote_count:number;
     runtime : string;
     genres:IGenre[];
+    budget:number;
 }

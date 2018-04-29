@@ -1,9 +1,7 @@
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="sticky-top">
 <img id="logo" 
 [src]=logo_path alt="movie" routerLink='/'>
-<!-- onclick="topFunction()"  -->
 </div>
 <div class="bg-img" [style.backgroundImage]="'url('+ base_back_drops+movieDetail?.backdrop_path +')'"></div>
 
@@ -15,26 +13,29 @@
     <div class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-2" ></div>
     <div class="img-content col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
       <img id="poster" class="img-fluid" src="{{base_url}}{{movieDetail?.poster_path}}" alt="poster images">
-      <div class="img-overlay">
+      <!-- <div class="img-overlay">
           <a href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" placement="right" ngbTooltip="Play Trailer" target="_blank"><i class="fa fa-play-circle fa-5x"></i> </a>
-      </div>
+      </div> -->
     </div>
-    <div class="text-content col-12 col-sm-4 col-md-4 col-lg-4 col-xl-5">
-      <!-- <div class="image-wrapper">
-        <img class="img-fluid" src='https://image.tmdb.org/t/p/original{{movieDetail?.backdrop_path}}' alt="poster images"> 
-        <div class="img-overlay">
-          <a href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" target="_blank"><i class="fa fa-play-circle fa-4x"></i> </a>
-        </div>
-      </div>
-      <hr> -->
-      <h3 id= "movie-title">
+    <div class="text-content col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+      <h2 id= "movie-title">
         {{movieDetail?.title}}
         <span id="sub_title">({{movieDetail?.release_date | date:'yyyy'}})</span>
-      </h3>  
+      </h2>  
       <div class="genre-type">      
-        <h5 class="genre-id" *ngFor="let md of movieDetail?.genres">  
-          <span class="badge badge-pill badge-info">{{md.name}}</span> &nbsp;
+        <h5 class="genre-id" *ngFor="let g of movieDetail?.genres">  
+          <span class="badge badge-pill badge-info">{{g.name}}</span> &nbsp;
         </h5>
+      </div>          
+      <div class="user-action">
+        <div class="circle-button action-elements">
+          <circle-progress
+            [percent]="movieValue" 
+            [animation]="true"
+            [outerStrokeColor]= "movieColor"
+          ></circle-progress>
+        </div>
+          <a class="action-elements" [ngStyle]="{'color':'white'}" href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" target="_blank"><i class="fa fa-play fa-lg"> Play Trailer</i></a> 
       </div>
       <br>
       <div id = "movieDetails">
@@ -44,16 +45,17 @@
           <!-- <h5>Movie Type :</h5> <li class = "movieType" *ngFor="let md of movieDetail?.genres" >{{md?.name}}/&nbsp;</li> -->
           <li> <h5>Release Year :</h5> {{movieDetail?.release_date}}</li>
           <li> <h5>Run time :</h5> {{movieDetail?.runtime}} mins</li>
-          <li> <h5>Revenue :</h5> {{movieDetail?.revenue}} </li> 
-          <li> <h5>Rating :</h5> {{movieDetail?.vote_average}} </li>
-          <li> <h5>Vote Count :</h5>  {{movieDetail?.vote_count}} </li>
+          <!-- <li> <h5>Budget :</h5> ${{movieDetail?.budget}} </li> -->
+          <!-- <li> <h5>Revenue :</h5> {{movieDetail?.revenue}} </li>  -->
+          <!-- <li> <h5>Rating :</h5> {{movieDetail?.vote_average}} </li> -->
+          <!-- <li> <h5>Vote Count :</h5>  {{movieDetail?.vote_count}} </li> -->
         </ul>
-        <div> 
+        <!-- <div> 
           <h5>Home Page</h5> <a href="{{movieDetail?.homepage}}">{{movieDetail?.homepage}}</a> 
-        </div>
+        </div> -->
       </div>
     </div>
-    <div class="col-0 col-sm-2 col-md-2 col-lg-2 col-xl-2"></div>
+    <div class="col-0 col-sm-1 col-md-1 col-lg-1 col-xl-2"></div>
   </div>
 </div>
 </div>

@@ -27,6 +27,8 @@ li{
     padding:0px;
     margin:0px;
 }
+img{cursor: pointer;}
+/* a{color: black;} */
 .search-bar input {
     width:400px;
 }
@@ -39,9 +41,7 @@ li{
     padding:15px;
     /* margin-top: 3px; */
 }
-img{
-    cursor: pointer;
-}
+
 .movie-name:hover{
     background-color: #c2c2c2;
 }
@@ -60,4 +60,10 @@ i, li {
     display: block;
     height: 60px;
     width: 60px;
+}
+a{
+    color: black;
+}
+.active{
+    color:rgb(221, 76, 100) !important;
 }

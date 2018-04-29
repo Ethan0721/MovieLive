@@ -24,6 +24,7 @@ import { takeUntil } from 'rxjs/operators'; // for rxjs ^5.5.0 lettable operator
   ]
 })
 export class MovieDetailComponent implements OnInit {
+  movieValue : number;
   movieDetail : IMovie;
   movieId :  number;
   base_url:string = "https://image.tmdb.org/t/p/w780/";
@@ -32,6 +33,7 @@ export class MovieDetailComponent implements OnInit {
   movieCast : ICast[] =[];
   similarMovie:IMovie[]=[];
   logo_path:string;
+  movieColor='red';
   private ngUnsubscribe = new Subject<void>();
   
   constructor(private _route: ActivatedRoute, private responseService: ResponseService) {}
@@ -42,8 +44,17 @@ export class MovieDetailComponent implements OnInit {
     this.responseService.getMovieById(this.movieId)
     .takeUntil(this.ngUnsubscribe)
     .subscribe(
-      response =>
-      this.movieDetail = response
+      response =>{
+      this.movieDetail = response,
+      this.movieValue=this.movieDetail.vote_average*10
+      if(this.movieValue>70){
+        this.movieColor='#78C000';
+      }else if (this.movieValue>50){
+        this.movieColor='#d1d345';
+      }else{
+        this.movieColor='red';
+        }
+      }
     );
     
     this.responseService.getPlayingVideo(this.movieId)

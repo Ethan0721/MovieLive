@@ -2,16 +2,15 @@
 <nav class=" navbar navbar-expand-lg" >
   <div class="navbar-brand"  [@scrollAnimation]="pos" href="#" > 
     <img id="logo" 
-    [src]=logo_path alt="movie log">
-    <!-- onclick="topFunction()"  -->
+    [src]=logo_path alt="movie logo">
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active"  routerLinkActive='active' >
-        <a class="nav-link"  routerLink='/'  href="#"  >Home<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a  routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}" class="nav-link"  routerLink='/' >Home</a>
       </li>
       <li ngbDropdown class="nav-item" routerLinkActive='active'>
         <a  class="nav-link" id="dropdownBasic1" ngbDropdownToggle> Movies </a>
@@ -61,14 +60,14 @@
                   </div>
               </div>
             </li>   
-          <li *ngIf="!isLogin" class="nav-item" routerLinkActive='active'>
-            <a class="nav-link" routerLink='/login' href="#">Login</a>
+          <li *ngIf="!isLogin" class="nav-item">
+            <a class="nav-link" routerLink='/login' routerLinkActive='active'  href="#">Login</a>
           </li>
           <!-- <li *ngIf="isLogin" class="nav-item" >
               <a class="nav-link" (click)="Logout()">Logout</a>
           </li> -->
-          <li class="nav-item" routerLinkActive='active'>
-            <a class="nav-link" routerLink='/signup' href="#">SignUp</a>
+          <li class="nav-item" >
+            <a class="nav-link" routerLinkActive='active' routerLink='/signup' href="#">SignUp</a>
           </li>
 
 
