@@ -30,7 +30,6 @@
 }
 ul{
     text-align: left;
-    list-style-type: none;
     margin:0px;
     padding: 0px;
 }
@@ -45,26 +44,36 @@ h5{
 }
 .user-action{
     margin: 0px;
-
-    /* width: 800px;
-    height:100px; */
     height: 80px;
      /* background-color: blueviolet;  */
     padding: 5px;
 }
 .action-elements{
     display: inline-block !important;
-    margin-right: 30px;
+    margin-right: 40px;
+}
+#heart-icon{
+    position: relative;
+    bottom:45%;
+    /* height: 40px; */
+}
+.user-action .heart-icon{
+    /* height: 30px; */
+    width: 40px;    
+    font-size: 25px;
+}
+.user-action a {
+    width: 130px;
+    position: relative;
+    bottom:50%;
 }
 .user-action i {
     font-size: 15px;
     font-weight:600;
-    position: absolute;
-    top:115px;
 }
-.user-action i:hover {
+.play-icon:hover {
     color:rgb(238, 154, 76);
-    font-size: 16px;
+    /* font-size: 16px; */
 }
 .text-content{
     z-index: 1;

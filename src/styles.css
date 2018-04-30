@@ -18,10 +18,7 @@
    margin: 0px;
    padding: 0px;
  }
-img{
-  outline:none !important;
- }
- ul, button, li{
+ ul, button, li, img, a, i{
   list-style-type: none;
   outline:none !important;
  }

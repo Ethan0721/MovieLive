@@ -27,13 +27,14 @@ export class MovieDetailComponent implements OnInit {
   movieValue : number;
   movieDetail : IMovie;
   movieId :  number;
-  base_url:string = "https://image.tmdb.org/t/p/w780/";
+  base_url:string = "https://image.tmdb.org/t/p";
   base_back_drops : string = "https://image.tmdb.org/t/p/original";
   moviePlay : any;
   movieCast : ICast[] =[];
   similarMovie:IMovie[]=[];
   logo_path:string;
   movieColor='red';
+  heartColor:boolean=false;
   private ngUnsubscribe = new Subject<void>();
   
   constructor(private _route: ActivatedRoute, private responseService: ResponseService) {}
@@ -77,6 +78,9 @@ export class MovieDetailComponent implements OnInit {
     //   res=>
     //   this.similarMovie = res.results
     // );
+  }
+  clickHeart(){
+   this.heartColor = !this.heartColor;
   }
   ngOnDestroy(){
     this.ngUnsubscribe.next();

@@ -3,19 +3,15 @@
 <img id="logo" 
 [src]=logo_path alt="movie" routerLink='/'>
 </div>
-<div class="bg-img" [style.backgroundImage]="'url('+ base_back_drops+movieDetail?.backdrop_path +')'"></div>
-
+<div class="bg-img" [style.backgroundImage]=" ' url('+ base_back_drops + '/'+movieDetail?.backdrop_path +')'"></div>
 <div class="container-fluid">
   <div class="movie-section">
     <!-- <a name ="page-top"></a> -->
     <!-- <h1 class="my-4 movieTitle" >{{movieDetail?.title}}  <span id="sub_title">{{movieDetail?.release_date | date:'yyyy'}} </span></h1>  -->
   <div class="row">
-    <div class="col-0 col-sm-0 col-md-2 col-lg-3 col-xl-2" ></div>
-    <div class="img-content col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3">
-      <img id="poster" class="img-fluid" src="{{base_url}}{{movieDetail?.poster_path}}" alt="poster images">
-      <!-- <div class="img-overlay">
-          <a href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" placement="right" ngbTooltip="Play Trailer" target="_blank"><i class="fa fa-play-circle fa-5x"></i> </a>
-      </div> -->
+    <div class="col-0 col-sm-0 col-md-1 col-lg-2 col-xl-2" ></div>
+    <div class="img-content col-12 col-sm-4 col-md-5 col-lg-4 col-xl-3">
+      <img id="poster" class="img-fluid" src="{{base_url}}/w780/{{movieDetail?.poster_path}}" alt="poster images">
     </div>
     <div class="text-content col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
       <h2 id= "movie-title">
@@ -33,14 +29,22 @@
             [percent]="movieValue" 
             [animation]="true"
             [outerStrokeColor]= "movieColor"
+            [animationDuration]= "700"
           ></circle-progress>
         </div>
-          <a class="action-elements" [ngStyle]="{'color':'white'}" href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" target="_blank"><i class="fa fa-play fa-lg"> Play Trailer</i></a> 
+        
+        <div id="heart-icon" class="action-elements" [style.color]="heartColor ? 'red' : 'white'" (click)="clickHeart()">
+          <i class="heart-icon fa fa-heart" [ngClass]="{'active': isActive}"></i>
+        </div>
+        
+        <a class="icons action-elements" [ngStyle]="{'color':'white'}" href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" target="_blank">
+          <i class="play-icon fa fa-play"> Play Trailer</i>
+        </a> 
       </div>
       <br>
       <div id = "movieDetails">
         <ul>
-          <li><h5>Overview  </h5> <p>{{movieDetail?.overview}} </p></li>
+          <li><h5>Overview  </h5> <p>{{ (movieDetail?.overview.length<300)? (movieDetail?.overview) : ( movieDetail?.overview | slice:0:300 )+ '...' }} </p></li>
           <li><h5>Original Title : </h5> {{movieDetail?.original_title}}</li>
           <!-- <h5>Movie Type :</h5> <li class = "movieType" *ngFor="let md of movieDetail?.genres" >{{md?.name}}/&nbsp;</li> -->
           <li> <h5>Release Year :</h5> {{movieDetail?.release_date}}</li>
@@ -67,7 +71,7 @@
       <ng-container  *ngFor="let c of movieCast; let i=index">
         <div class="card-deck" *ngIf="i<5 && [c.profile_path] !='' " >
           <div class="card">
-            <img class="card-img-top" src="http://image.tmdb.org/t/p/w185/{{c?.profile_path}}" alt="Card image cap">
+            <img class="card-img-top" src="{{base_url}}/w185/{{c?.profile_path}}" alt="Card image cap">
             <div class="card-body" >
               <h6 class= "card-title card-name"><strong>{{c?.name}}</strong></h6>  
               <h6 class= "card-title card-charachter">{{c?.character}}</h6>    
