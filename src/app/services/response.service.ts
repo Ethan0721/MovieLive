@@ -51,7 +51,7 @@ import 'rxjs/add/operator/take';
         .catch(this.handleError);
     }
     getMoviePlaying(pageId : number):Observable<IuserResponse>{
-        return this._http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=e7ec5de68c5c7f163beab4e361e6245d&language=en-US&page="+pageId)
+        return this._http.get(this.url+"now_playing?api_key=e7ec5de68c5c7f163beab4e361e6245d&language=en-US&page="+pageId)
         .retryWhen(errors=>errors.delay(5000))
         .map(resp => resp as IuserResponse)
         .catch(this.handleError);
@@ -63,14 +63,14 @@ import 'rxjs/add/operator/take';
         .catch(this.handleError);
     }
     getCastMovie(movieId : number ):Observable<IcastResponse>{
-        return this._http.get("https://api.themoviedb.org/3/movie/"+movieId+"/credits?api_key=e7ec5de68c5c7f163beab4e361e6245d")
+        return this._http.get(this.url+movieId+"/credits?api_key=e7ec5de68c5c7f163beab4e361e6245d")
         .retryWhen(errors=>errors.delay(5000))
         .map(res=> res )
         // .takeWhile((data)=>data.count<4) 
         .catch(this.handleError);
     }
     getSimilarMovie(movieId : number ) : Observable<IuserResponse>{
-        return this._http.get("https://api.themoviedb.org/3/movie/"+movieId+"/similar?api_key=e7ec5de68c5c7f163beab4e361e6245d&language=en-US&page=1")
+        return this._http.get(this.url+movieId+"/similar?api_key=e7ec5de68c5c7f163beab4e361e6245d&language=en-US&page=1")
         .retryWhen(errors=>errors.delay(5000))
         .map(res=> res as IuserResponse)
         .catch(this.handleError);
