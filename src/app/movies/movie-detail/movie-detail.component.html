@@ -5,7 +5,7 @@
 </div>
 <div class="bg-img" [style.backgroundImage]=" ' url('+ base_back_drops + '/'+movieDetail?.backdrop_path +')'"></div>
 <div class="container-fluid">
-  <div class="movie-section">
+  <section class="movie-section">
     <!-- <a name ="page-top"></a> -->
     <!-- <h1 class="my-4 movieTitle" >{{movieDetail?.title}}  <span id="sub_title">{{movieDetail?.release_date | date:'yyyy'}} </span></h1>  -->
   <div class="row">
@@ -34,7 +34,7 @@
         </div>
         
         <div id="heart-icon" class="action-elements" [style.color]="heartColor ? 'red' : 'white'" (click)="clickHeart()">
-          <i class="heart-icon fa fa-heart" [ngClass]="{'active': isActive}"></i>
+          <i class="heart-icon fa fa-heart" ></i>
         </div>
         
         <a class="icons action-elements" [ngStyle]="{'color':'white'}" href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" target="_blank">
@@ -45,10 +45,10 @@
       <div id = "movieDetails">
         <ul>
           <li><h5>Overview  </h5> <p>{{ (movieDetail?.overview.length<300)? (movieDetail?.overview) : ( movieDetail?.overview | slice:0:300 )+ '...' }} </p></li>
-          <li><h5>Original Title : </h5> {{movieDetail?.original_title}}</li>
+          <li><h5>Original Title : </h5> <span>{{movieDetail?.original_title}}</span></li>
           <!-- <h5>Movie Type :</h5> <li class = "movieType" *ngFor="let md of movieDetail?.genres" >{{md?.name}}/&nbsp;</li> -->
-          <li> <h5>Release Year :</h5> {{movieDetail?.release_date}}</li>
-          <li> <h5>Run time :</h5> {{movieDetail?.runtime}} mins</li>
+          <li> <h5>Release Year :</h5> <span>{{movieDetail?.release_date}}</span></li>
+          <li> <h5>Run time :</h5> <span>{{movieDetail?.runtime}} mins</span></li>
           <!-- <li> <h5>Budget :</h5> ${{movieDetail?.budget}} </li> -->
           <!-- <li> <h5>Revenue :</h5> {{movieDetail?.revenue}} </li>  -->
           <!-- <li> <h5>Rating :</h5> {{movieDetail?.vote_average}} </li> -->
@@ -61,9 +61,9 @@
     </div>
     <div class="col-0 col-sm-1 col-md-1 col-lg-1 col-xl-2"></div>
   </div>
+</section>
 </div>
-</div>
-<div class="cast-section">
+<section class="cast-section">
     <h4 class="col-md-12 section-header">Top Billed Cast</h4>
 <div class="row">
     <div class="left-side-bar col-md-1"></div>
@@ -82,5 +82,5 @@
     </div>
       <div class="right-side-bar col-md-2"></div>
   </div>
-</div>
+</section>
 

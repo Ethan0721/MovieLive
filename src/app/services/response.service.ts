@@ -1,8 +1,8 @@
+import { IuserResponse, IcastResponse } from './../shared/userResponse';
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { AbstractBaseService } from './base.service';
-import { IuserResponse,IcastResponse } from '../shared/userResponse';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
 import { AppError } from '../shared/app.error';
 import { NotFoundError } from '../shared/not.found.error';
 import { IMovie } from '../shared/Movies';
@@ -14,9 +14,10 @@ import 'rxjs/add/operator/take';
 @Injectable()
 // export class ResponseService extends AbstractBaseService<IuserResponse>{
 
-export class ResponseService {
+    export class ResponseService {
     url : string = "https://api.themoviedb.org/3/movie/";
     api_token : string = "?api_key=e7ec5de68c5c7f163beab4e361e6245d";
+    temp : any;
     constructor(private _http:HttpClient) {}
 
     getPopularMovies(pageid : number ): Observable<IuserResponse>{

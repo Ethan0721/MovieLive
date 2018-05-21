@@ -1,8 +1,12 @@
 img {
-    height: 500px;
+    height: 60vh;
     width:  80%;
     cursor: pointer;
+    /* width: calc((100%-20px)/2) */
 }
+/* img:type-of-last{
+    margin-right: 0px;
+} */
 .carousel-images{
     background-color: black;
 }

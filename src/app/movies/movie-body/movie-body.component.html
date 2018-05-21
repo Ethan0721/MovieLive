@@ -4,20 +4,14 @@
 <div class ="section-container">
     <h3 class="section-header"> Movie Section</h3><hr>
     <div class="row"> 
-      <div class = "col-md-2" >
-        <!-- <app-genre></app-genre> -->
-        
+      <div class = "col-md-2" >        
         <nav class="hidden-xs-down bg-faded sidebar secion-sidebar">
           <ul class="nav nav-pills flex-column sticky-top">
-            <!-- <li class="nav-item">
-              <a class="nav-link active">GENRES<span class="sr-only">(current)</span></a>
-            </li> -->
             <li *ngFor="let g of genres" class="nav-item">
               <a class="nav-link"  [routerLink]= "['/genre/', g.id ]" [queryParams]="{ pageId:1 }">{{g.name}}</a>
             </li>
           </ul>
         </nav><hr>
-
       </div>
       <div class="col-md-10 section-body">
         <div class="row"><!-- pipe filter add in movieResult   | paginate: { itemsPerPage: 10, currentPage: p }" -->
@@ -45,6 +39,7 @@
           </ng-container>
         </div>
       </div>
+      <!-- <div class = "col-md-1" >  </div> -->
     </div>
 <br>
     <div class="section-footer">
