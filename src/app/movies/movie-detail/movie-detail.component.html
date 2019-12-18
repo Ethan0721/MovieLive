@@ -24,22 +24,24 @@
         </h5>
       </div>          
       <div class="user-action">
-        <div class="circle-button action-elements">
+        <!-- <div class="circle-button action-elements">
           <circle-progress
             [percent]="movieValue" 
             [animation]="true"
             [outerStrokeColor]= "movieColor"
             [animationDuration]= "700"
           ></circle-progress>
+        </div> -->
+        <div>
+          <div id="heart-icon" class="action-elements" [style.color]="heartColor ? 'red' : 'white'" (click)="clickHeart()">
+            <i class="heart-icon fa fa-heart" ></i>
+          </div>
+          
+          <a class="icons action-elements" [ngStyle]="{'color':'white'}" href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" target="_blank">
+            <i class="play-icon fa fa-play"> Play Trailer</i>
+          </a> 
         </div>
         
-        <div id="heart-icon" class="action-elements" [style.color]="heartColor ? 'red' : 'white'" (click)="clickHeart()">
-          <i class="heart-icon fa fa-heart" ></i>
-        </div>
-        
-        <a class="icons action-elements" [ngStyle]="{'color':'white'}" href = "https://www.youtube.com/watch?v={{moviePlay?.key}}" target="_blank">
-          <i class="play-icon fa fa-play"> Play Trailer</i>
-        </a> 
       </div>
       <br>
       <div id = "movieDetails">

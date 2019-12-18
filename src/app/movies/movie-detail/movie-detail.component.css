@@ -54,7 +54,7 @@ h5{
     padding: 5px;
 }
 .action-elements{
-    display: inline-block !important;
+    display: inline-block;
     margin-right: 5vw;
 }
 #heart-icon{
